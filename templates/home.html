@@ -1,8 +1,17 @@
 {% extends "layout.html" %}
 {% block content %}
     {% for s_sheet in s_sheets%}
-        <h2>{{s_sheet.Torah_Verses}}</h2>
-        <p>Created by: {{s_sheet.Created_By}}</p>
-        <p>Created on: {{s_sheet.Created_On}}</p>
+
+    <article class="media content-section">
+      <div class="media-body">
+        <div class="article-metadata">
+          <a href="#">{{s_sheet.Created_By}}</a>
+          <small class="text-muted">{{s_sheet.Created_On}}</small>
+        </div>
+        <h2><a class="article-title" href="#">{{ s_sheet.Torah_Verses }}</a></h2>
+        <p class="article-content">_</p>
+      </div>
+    </article>
+
     {% endfor %}
 {% endblock content %}
