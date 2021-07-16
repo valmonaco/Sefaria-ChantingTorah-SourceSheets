@@ -1,5 +1,6 @@
 from flask import Flask, render_template, url_for, flash, redirect
 from forms import RegistrationForm, LoginForm, CreateForm
+from sourcesheet_actions import generate
 
 app = Flask(__name__)
 app.config.from_pyfile('config.cfg')
@@ -48,7 +49,7 @@ def login():
 def create():
     form=CreateForm()
     if form.validate_on_submit():
-        flash('Sheet created.','success')
+        flash('Sheet created: [form #: ' +  generate() + '].','success')
         return redirect(url_for('home'))
     return render_template('create.html', title='Create Source Sheet', form=form)
 
