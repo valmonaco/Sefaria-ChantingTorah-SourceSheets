@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for, flash, redirect
-from forms import RegistrationForm, LoginForm
+from forms import RegistrationForm, LoginForm, CreateForm
 
 app = Flask(__name__)
 app.config.from_pyfile('config.cfg')
@@ -43,3 +43,12 @@ def register():
 @app.route('/login')
 def login():
     return render_template('login.html', title='Login')
+
+@app.route('/create', methods=['GET','POST'])
+def create():
+    form=CreateForm()
+    if form.validate_on_submit():
+        flash('Sheet created.','success')
+        return redirect(url_for('home'))
+    return render_template('create.html', title='Create Source Sheet', form=form)
+
