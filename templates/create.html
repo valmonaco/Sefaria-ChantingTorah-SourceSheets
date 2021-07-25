@@ -9,6 +9,18 @@
             {% endif %}
             <fieldset class="form-group">
                 <div class="form-group">
+                    <div>Select Book from Torah:</div>
+                    {{ form.Torah_Book_Field }}
+                    <br/><br/>
+                    <div>Enter chapter:</div>
+                    {{ form.chapter }}
+                    <br/><br/>
+                    <div>Enter starting verse:</div>
+                    {{ form.startingVerse }}
+                    <br/><br/>
+                    <div>Enter ending verse:</div>
+                    {{ form.endingVerse }}
+                    <br/><br/>
                     {{ form.submit(class="btn btn-outline-info") }}
                 </div>
             </fieldset>
