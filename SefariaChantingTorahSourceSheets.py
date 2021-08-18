@@ -2,7 +2,13 @@
 from flask import Flask, render_template, url_for, flash, redirect, request
 from forms import RegistrationForm, LoginForm, CreateForm
 from sourcesheet_actions import customize
+<<<<<<< HEAD
 from sefaria_functions import query_Sefaria_Reference
+=======
+
+app = Flask(__name__, instance_relative_config=True)
+app.config.from_pyfile('config.py')
+>>>>>>> generate_sheet
 
 app = Flask(__name__, instance_relative_config=True)
 app.config.from_pyfile('config.py')
@@ -50,6 +56,7 @@ def login():
 def create():
     form=CreateForm()
     if form.validate_on_submit():
+<<<<<<< HEAD
         customize()
         Book = form.Torah_Book_Field.data
         Chapter = form.chapter.data
@@ -59,5 +66,9 @@ def create():
 
         flash('Sefaria Feedback: ' + query_Sefaria_Reference(verse) ,'success')
         return redirect(url_for('create'))
+=======
+        flash(customize())
+        return redirect(url_for('home'))
+>>>>>>> generate_sheet
     return render_template('create.html', title='Create Source Sheet', form=form)
 
