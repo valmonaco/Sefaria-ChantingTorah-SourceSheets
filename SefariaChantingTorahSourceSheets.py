@@ -50,16 +50,18 @@ def login():
 def create():
     form=CreateForm()
     if form.validate_on_submit():
-        #customize()
-        #Book = form.Torah_Book_Field.data
-        #Chapter = form.chapter.data
-        #StartVerse = form.startingVerse.data
-        #EndVerse = form.endingVerse.data
-        #verse = str(Book) + " " + str(Chapter) + ":" + str(StartVerse) + "-" + str(EndVerse)
+
+        Book = form.Torah_Book_Field.data
+        Chapter = form.chapter.data
+        StartVerse = form.startingVerse.data
+        EndVerse = form.endingVerse.data
+        verse = str(Book) + " " + str(Chapter) + ":" + str(StartVerse) + "-" + str(EndVerse)
+        query_Sefaria_Reference(verse)
+
         #flash('Sefaria Feedback: ' + query_Sefaria_Reference(verse) ,'success')
         #return redirect(url_for('create'))
 
-        flash(customize())
-        return redirect(url_for('home'))
+        #flash(customize(verse))
+        #return redirect(url_for('home'))
     return render_template('create.html', title='Create Source Sheet', form=form)
 
