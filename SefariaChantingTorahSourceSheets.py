@@ -2,7 +2,7 @@
 from flask import Flask, render_template, url_for, flash, redirect, request
 from forms import RegistrationForm, LoginForm, CreateForm
 from sourcesheet_actions import customize
-from sefaria_functions import query_Sefaria_Reference
+from sefaria_functions import generate_sheet
 
 app = Flask(__name__, instance_relative_config=True)
 app.config.from_pyfile('config.py')
@@ -55,8 +55,10 @@ def create():
         Chapter = form.chapter.data
         StartVerse = form.startingVerse.data
         EndVerse = form.endingVerse.data
-        verse = str(Book) + " " + str(Chapter) + ":" + str(StartVerse) + "-" + str(EndVerse)
-        query_Sefaria_Reference(verse)
+        Book_Chapter = str(Book) + " " + str(Chapter) + ":"
+
+        generate_sheet(Book_Chapter, StartVerse, EndVerse)
+
 
         #flash('Sefaria Feedback: ' + query_Sefaria_Reference(verse) ,'success')
         #return redirect(url_for('create'))
