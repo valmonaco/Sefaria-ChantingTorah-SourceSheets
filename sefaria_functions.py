@@ -1,7 +1,8 @@
 import requests, json
 from flask import current_app as app, flash, session, Markup
 import urllib as urllib2
-import trope_constants
+from trope_highlighting import extract_trope_characters, map_trope_placement, set_loop_counts, loop_through_trope_patterns
+
 
 def retrieve_Verse(verse) -> str:
     #verse_span = Book_Chapter + str(StartVerse) + "-" + str(EndVerse)
@@ -83,18 +84,25 @@ def generate_sheet(Book_Chapter, StartVerse, EndVerse):
                     ref_object["text"] = {"en":Sefaria_Torah_verseJSON['text'], "he":Sefaria_Torah_verseJSON['he']}
                     ref_object["options"]= {"PrependRefWithEn": Book_Chapter + str(StartVerse+i)}
 
-
+                    sheet_json["sources"].append(ref_object)
 
                     #media_object={}
                     #media_object["media"] = "https://tbeboca.org/wp-content/Audio/DEUTERONOMY/TORAH/Torah%20V-Zot%20HaBracha/TORAH_V'zot_HaBracha_V5.mp3"
 
-                    #highlighted_text_object={}
-                    #highlighted_text_object["outsideText"]= '<br/><span style="background-color:#a6be54; color:black;">וּמֹשֶׁ֗ה </span><span style="background-color:#d1b541; color:black;">בֶּן־מֵאָ֧ה וְעֶשְׂרִ֛ים </span><span style="background-color:#549eb3; color:black;">שָׁנָ֖ה בְּמֹת֑וֹ </span><span style="background-color:#e49c39; color:black;">לֹא־כָהֲתָ֥ה עֵינ֖וֹ וְלֹא־נָ֥ס לֵחֹֽה׃ </span>'
+                    highlighted_text_object={}
+                    just_trope_str = extract_trope_characters(Sefaria_Torah_verseJSON['he'])
+                    cumulative_tropes = map_trope_placement(Sefaria_Torah_verseJSON['he'])
+                    highlight_count_dict= set_loop_counts(just_trope_str)
 
-                    sheet_json["sources"].append(ref_object)
-                    #
+
+                    if len(just_trope_str) > 0:
+                        highlighted_verse=loop_through_trope_patterns(just_trope_str,highlight_count_dict,cumulative_tropes,Sefaria_Torah_verseJSON['he'])
+
+                    highlighted_text_object["outsideText"]= highlighted_verse
+                    sheet_json["sources"].append(highlighted_text_object)
+
+
                     #sheet_json["sources"].append(media_object)
-                    #sheet_json["sources"].append(highlighted_text_object)
 
                     sheet_json["options"] = {
                         "numbered": 0,
