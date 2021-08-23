@@ -93,6 +93,7 @@ def generate_sheet(Book_Chapter, StartVerse, EndVerse):
                     just_trope_str = extract_trope_characters(Sefaria_Torah_verseJSON['he'])
                     cumulative_tropes = map_trope_placement(Sefaria_Torah_verseJSON['he'])
                     highlight_count_dict= set_loop_counts(just_trope_str)
+                    print(highlight_count_dict)
 
 
                     if len(just_trope_str) > 0:
