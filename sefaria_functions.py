@@ -73,7 +73,7 @@ def generate_sheet(Book_Chapter, StartVerse, EndVerse):
                         sheet_json["sources"]=[]
 
                         comment_object={}
-                        comment_object["comment"]= "<p><super>Please consult a rabbi, tutor, or a <i>gabbai</i> when using this study sheet. The creator of the sheet (not Sefaria) has sole responsibility for any errors. Please help make this program the best it can be by sending a detailed message describing any errors to: blahblah@gmail.com</super></p>"
+                        comment_object["comment"]= "<p><small>Please consult a rabbi, tutor, or a <i>gabbai</i> when using this study sheet. The creator of the sheet (not Sefaria) has sole responsibility for any errors. Please help make this program the best it can be by sending a detailed message describing any errors to: blahblah@gmail.com</small></p>"
                         sheet_json["sources"].append(comment_object)
 
                     ref_object={}

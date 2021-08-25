@@ -3,39 +3,41 @@ import trope_constants
 def create_highlight_dict():
     highlight_dict={
 
-    #'DoubleMercha':{'num': "11",'family' : double_mercha_trope, 'loop' : 0, 'anchor' : u'\u05A6'}
-    #	,
+    'DoubleMercha':{'num': "11",'family' : trope_constants.DOUBLE_MERCHA_TROPE, 'loop' : 0, 'anchor' : u'\u05A6'}
+    	,
+    'Karnei_Para':{'num': "13",'family' : trope_constants.K_PARA_BYOMO_TROPE, 'loop' : 0, 'anchor' : u'\u059F'}
+        ,
     'Etnachta':{'num': "1", 'family' : trope_constants.ETNACHTA_TROPE_LIST, 'loop' : 0, 'anchor' : u'\u0591'}
     	,
     'Siluk':{'num': "2",'family' : trope_constants.SILUK_TROPE_LIST, 'loop' : 0,'anchor' : u'\u05BD'}
-    #	,
-    #'Ytiv' : {'num': "3",'family' : ytiv_trope_list, 'loop' : 0, 'anchor' : u'\u059A'}
-    #	,
-    #'Katon':{'num': "3",'family' : katon_trope_list, 'loop' : 0, 'anchor' : u'\u0594'}
-    #	,
-    #'K-Vazla':{'num': "7",'family' : kvazla_trope, 'loop' : 0, 'anchor' : u'\u059C'}
-    #	,
-    #'Geresh':{'num': "7",'family' : geresh_trope, 'loop' : 0, 'anchor' : u'\u059C'}
-    #	,
-    #'Rvii':{'num': "4",'family' : rvii_trope_list, 'loop' : 0, 'anchor' : u'\u0597'}
-    #	,
-    #'Gershayim':{'num': "9",'family' : gershayim_trope, 'loop' : 0, 'anchor' : u'\u059E'}
-    #	,
-    #'Tvir':{'num': "6",'family' : tvir_trope_list, 'loop' : 0, 'anchor' : u'\u059B'}
-    #	,
-    #'Darga' :{'num': "6",'family' : darga_trope, 'loop' : 0, 'anchor' : u'\u05A7'}
-    #	,
-    #'Pazer':{'num': 1,'family' : pazer_trope, 'loop' : 0, 'anchor' : u'\u05A1'}
-    #	,
-    #'Zakef_Gadol' :{'num': "5",'family' : zakef_gadol_trope, 'loop' : 0, 'anchor' : u'\u0595'}
-    #	,
-    #'Segol' :{'num': "8",'family' : segol_trope_list, 'loop' : 0, 'anchor' : u'\u0592'}
-    #	,
-    #'Tlisha_G' : {'num': "10",'family' : tlisha_gdola_trope_list, 'loop' : 0, 'anchor' : u'\u05A0'}
-    #	,
-    #'Tlisha_K' : {'num': "10",'family' : tlisha_ktana_trope_list, 'loop' : 0, 'anchor' : u'\u05A9'}
-    #	,
-    #'Shalshelet':{'num': "12",'family' : shalshelet_trope, 'loop' : 0, 'anchor' : u'\u0593'}
+    	,
+    'Ytiv' : {'num': "3",'family' : trope_constants.YTIV_TROPE_LIST, 'loop' : 0, 'anchor' : u'\u059A'}
+    	,
+    'Katon':{'num': "3",'family' : trope_constants.KATON_TROPE_LIST, 'loop' : 0, 'anchor' : u'\u0594'}
+    	,
+    'K-Vazla':{'num': "7",'family' : trope_constants.KVAZLA_TROPE, 'loop' : 0, 'anchor' : u'\u059C'}
+    	,
+    'Geresh':{'num': "7",'family' : trope_constants.GERESH_TROPE, 'loop' : 0, 'anchor' : u'\u059C'}
+    	,
+    'Rvii':{'num': "4",'family' : trope_constants.RVII_TROPE_LIST, 'loop' : 0, 'anchor' : u'\u0597'}
+    	,
+    'Gershayim':{'num': "9",'family' : trope_constants.GERSHAYIM_TROPE, 'loop' : 0, 'anchor' : u'\u059E'}
+    	,
+    'Tvir':{'num': "6",'family' : trope_constants.TVIR_TROPE_LIST, 'loop' : 0, 'anchor' : u'\u059B'}
+    	,
+    'Darga' :{'num': "6",'family' : trope_constants.DARGA_TROPE, 'loop' : 0, 'anchor' : u'\u05A7'}
+    	,
+    'Pazer':{'num': "1",'family' : trope_constants.PAZER_TROPE, 'loop' : 0, 'anchor' : u'\u05A1'}
+    	,
+    'Zakef_Gadol' :{'num': "5",'family' : trope_constants.ZAKEF_GADOL_TROPE, 'loop' : 0, 'anchor' : u'\u0595'}
+    	,
+    'Segol' :{'num': "8",'family' : trope_constants.SEGOL_TROPE_LIST, 'loop' : 0, 'anchor' : u'\u0592'}
+    	,
+    'Tlisha_G' : {'num': "10",'family' : trope_constants.TLISHA_GDOLA_TROPE_LIST, 'loop' : 0, 'anchor' : u'\u05A0'}
+    	,
+    'Tlisha_K' : {'num': "10",'family' : trope_constants.TLISHA_KTANA_TROPE_LIST, 'loop' : 0, 'anchor' : u'\u05A9'}
+    	,
+    'Shalshelet':{'num': "12",'family' : trope_constants.SHALSHELET_TROPE, 'loop' : 0, 'anchor' : u'\u0593'}
     }
     return highlight_dict
 
@@ -52,7 +54,8 @@ def define_colors():
 		"8": {"hex_color":"#69b190", "font_color": "black"}, #teal, segol, #18 in the smooth rainbow scheme
 		"9": {"hex_color":"#e4632d", "font_color": "black"}, #coral, gershayim, #28 in smooth rainbow scheme
 		"10":{"hex_color":"#6059a9", "font_color": "black"}, #deepest purple, tlisha, #10 in smooth rainbow scheme
-		"11":{"hex_color":"#b8221e", "font_color": "white"}, # RARE deep red, double mercha, #31 in smooth rainbow scheme
-		"12":{"hex_color":"#4e79c5", "font_color": "white"}, # RARE royal blue, Shalshelet, #12 in smooth rainbow scheme
+		"11":{"hex_color":"#b8221e", "font_color": "#FFFFFF"}, #RARE deep red, double mercha, #31 in smooth rainbow scheme
+		"12":{"hex_color":"#4e79c5", "font_color": "#FFFFFF"}, #RARE royal blue, Shalshelet, #12 in smooth rainbow scheme
+		"13":{"hex_color":"#8c6eb0", "font_color": "#FFFFFF"}  #RARE deep purple, Karnei_Para, #9 in smooth rainbow scheme}
 		  }
     return colors
