@@ -3,7 +3,7 @@
 DOUBLE_MERCHA1_39 =  u'\u0596'+ u'\u05A6' + u'\u05A7'
 DOUBLE_MERCHA1_39 = DOUBLE_MERCHA1_39[::-1]
 DOUBLE_MERCHA_TROPE = [DOUBLE_MERCHA1_39]
-
+DOUBLE_MERCHA_TROPE_TUNE =["none"]
 
 ETNACHTA = u'\u0591'
 ETNACHTA1_1 = u'\u0591'+ u'\u05A3'+ u'\u0596' + u'\u05A5'
@@ -19,6 +19,7 @@ ETNACHTA4_4 = u'\u0591'+ u'\u0596'
 ETNACHTA4_4 = ETNACHTA4_4[::-1]
 
 ETNACHTA_TROPE_LIST = [ETNACHTA,ETNACHTA4_4,ETNACHTA3_3,ETNACHTA2_2,ETNACHTA1_1]
+ETNACHTA_TROPE_TUNES =["none",  "none",      "none",     "none",     "none"]
 
 
 SILUK= u'\u05BD'
@@ -80,12 +81,12 @@ KATON_TROPE_TUNES = ["none","none",         "none",    "none",    "none",    "no
 KVAZLA= u'\u059C' + u'\u05A8'
 KVAZLA =KVAZLA[::-1]
 KVAZLA_TROPE = [KVAZLA]
-KVAZLA_TUNE=["none"]
+KVAZLA_TROPE_TUNE=["none"]
 
 
 GERESH1_16 = u'\u059C'
 GERESH_TROPE = [GERESH1_16]
-GERESH_TUNE=["none"]
+GERESH_TROPE_TUNE=["none"]
 
 
 RVII1_17= u'\u0597' + u'\u05A3' + u'\u05A3'
@@ -102,7 +103,7 @@ RVII_TROPE_TUNE=["none",    "none",    "none"]
 
 GERSHAYIM1_20 = u'\u059E'
 GERSHAYIM_TROPE = [GERSHAYIM1_20]
-GERSHAYIM_TUNE=["none"]
+GERSHAYIM_TROPE_TUNE=["none"]
 
 
 TVIR1_22 = u'\u059B'

@@ -1,6 +1,7 @@
 import highlighting_dictionaries
 import re
 
+
 def extract_trope_characters(verse):
     trope_characters = ""
     cumulative_tropes=[]
@@ -29,6 +30,7 @@ def extract_trope_characters(verse):
 
     return just_trope_str
 
+
 def map_trope_placement(verse):
     cumulative_tropes=[]
 
@@ -47,6 +49,7 @@ def map_trope_placement(verse):
 
     return cumulative_tropes
 
+
 def set_loop_counts(just_trope_str):
 
     highlight_dict = highlighting_dictionaries.create_highlight_dict()
@@ -59,7 +62,7 @@ def set_loop_counts(just_trope_str):
 
 
 def loop_through_trope_patterns(all_tropes_str, highlight_dict, trope_word_placement, verse):
-
+    #print(verse)
     start_span={}
     end_span=[]
 
@@ -68,12 +71,18 @@ def loop_through_trope_patterns(all_tropes_str, highlight_dict, trope_word_place
 
     res_span_mask=[0]*2
 
+
+    tune_list={}
+    ordered_tune_list=[]
+
     for trope_name in highlight_dict.keys():
-        print(trope_name)
+        #print(trope_name)
         for j in range(0,highlight_dict[trope_name]['loop']):
+            temp_tune_index=0
 
             for trope in highlight_dict[trope_name]['family']:
-                print(trope)
+
+                #print(trope)
                 pattern = re.compile(trope)
                 res = pattern.search(all_tropes_str)
 
@@ -85,20 +94,24 @@ def loop_through_trope_patterns(all_tropes_str, highlight_dict, trope_word_place
                         adjusted_end=adjusted_end+1
                     res_span_mask[0]=res.start()
                     res_span_mask[1]=res.end()
-
+                    temp_tune_index= highlight_dict[trope_name]['family'].index(trope)
+                    print("trope: " + trope +  "  temp_tune_index: "  + str(temp_tune_index))
 
             #start_span[adjusted_start]=highlight_dict[trope_name]['color']
             #start_span[adjusted_start]=colors[highlight_dict[trope_name]['num']]['hex_color']
             start_span[adjusted_start]=highlight_dict[trope_name]['num']
+            tune_list[adjusted_start] = highlight_dict[trope_name]['tunes'][temp_tune_index]
             end_span.append(adjusted_end)
+            #tune_list.append(highlight_dict[trope_name]['tunes'][temp_tune_index])
+            print(tune_list)
 
             for r in range(res_span_mask[0], res_span_mask[1]):
                 all_tropes_str = all_tropes_str[0:r] + "*" + all_tropes_str[r+1: ]
-            print(all_tropes_str)
+            #print(all_tropes_str)
 
 
-            print("start_span: "  + str(start_span))
-            print("end_span: "  + str(end_span))
+            #print("start_span: "  + str(start_span))
+            #print("end_span: "  + str(end_span))
 
 
     formatted_verse = "<br/>"
@@ -116,16 +129,19 @@ def loop_through_trope_patterns(all_tropes_str, highlight_dict, trope_word_place
 
         elif ((i in start_span) and not(i in end_span)):
             formatted_verse = (formatted_verse + "<span style=\"background-color:" + colors[start_span[i]]['hex_color'] + "; color:"+ colors[start_span[i]]['font_color'] + ";\">" + verse_array[i] + " ")
+            #print(tune_list[i])
+            ordered_tune_list.append(tune_list[i])
 
         elif ((i in start_span) and (i in end_span)):
             formatted_verse = formatted_verse + "</span><span style=\"background-color:" + colors[start_span[i]]['hex_color'] + "; color:"+ colors[start_span[i]]['font_color'] + ";\">" + verse_array[i] + " "
+            #print(tune_list[i])
+            ordered_tune_list.append(tune_list[i])
+
         else:
             formatted_verse = formatted_verse + verse_array[i] + " "
 
 
+
     formatted_verse =  formatted_verse + "</span>"
 
-    return formatted_verse
-
-
-
+    return formatted_verse, ordered_tune_list

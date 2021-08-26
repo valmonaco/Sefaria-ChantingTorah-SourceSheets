@@ -18,7 +18,7 @@ def retrieve_Verse(verse) -> str:
 
 
 def valid_ref(retrieved_JSON):
-    print(retrieved_JSON)
+    #print(retrieved_JSON)
     if not("error") in retrieved_JSON:
         return True
     else:
@@ -29,7 +29,7 @@ def publish_sheet(values)->str:
     try:
         response = requests.post(app.config['POST_URL'], data=values)
         responseJSON = response.json()
-        print(response.text)
+        #print(response.text)
         session.pop('_flashes', None)
         flash("A link to your Sefaria Torah Chanting sheet will appear soon.")
 
@@ -44,7 +44,7 @@ def publish_sheet(values)->str:
 
     except urllib2.error.HTTPError as e:
         error_message = e.read()
-        print(error_message)
+        #print(error_message)
         flash(error_message)
 
 
@@ -93,12 +93,13 @@ def generate_sheet(Book_Chapter, StartVerse, EndVerse):
                     just_trope_str = extract_trope_characters(Sefaria_Torah_verseJSON['he'])
                     cumulative_tropes = map_trope_placement(Sefaria_Torah_verseJSON['he'])
                     highlight_count_dict= set_loop_counts(just_trope_str)
-                    print(highlight_count_dict)
+                    #print(highlight_count_dict)
 
 
                     if len(just_trope_str) > 0:
-                        highlighted_verse=loop_through_trope_patterns(just_trope_str,highlight_count_dict,cumulative_tropes,Sefaria_Torah_verseJSON['he'])
+                        highlighted_verse,tune_list=loop_through_trope_patterns(just_trope_str,highlight_count_dict,cumulative_tropes,Sefaria_Torah_verseJSON['he'])
 
+                    print("inside generate_sheet, returned tune_list: " + str(tune_list))
                     highlighted_text_object["outsideText"]= highlighted_verse
                     sheet_json["sources"].append(highlighted_text_object)
 

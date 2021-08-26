@@ -3,41 +3,41 @@ import trope_constants
 def create_highlight_dict():
     highlight_dict={
 
-    'DoubleMercha':{'num': "11",'family' : trope_constants.DOUBLE_MERCHA_TROPE, 'loop' : 0, 'anchor' : u'\u05A6'}
+    'DoubleMercha':{'num': "11",'family' : trope_constants.DOUBLE_MERCHA_TROPE, 'tunes': trope_constants.DOUBLE_MERCHA_TROPE_TUNE, 'loop' : 0, 'anchor' : u'\u05A6'}
     	,
-    'Karnei_Para':{'num': "13",'family' : trope_constants.K_PARA_BYOMO_TROPE, 'loop' : 0, 'anchor' : u'\u059F'}
+    'Karnei_Para':{'num': "13",'family' : trope_constants.K_PARA_BYOMO_TROPE, 'tunes': trope_constants.K_PARA_BYOMO_TROPE_TUNE,'loop' : 0, 'anchor' : u'\u059F'}
         ,
-    'Etnachta':{'num': "1", 'family' : trope_constants.ETNACHTA_TROPE_LIST, 'loop' : 0, 'anchor' : u'\u0591'}
+    'Etnachta':{'num': "1", 'family' : trope_constants.ETNACHTA_TROPE_LIST,'tunes': trope_constants.ETNACHTA_TROPE_TUNES, 'loop' : 0, 'anchor' : u'\u0591'}
     	,
-    'Siluk':{'num': "2",'family' : trope_constants.SILUK_TROPE_LIST, 'loop' : 0,'anchor' : u'\u05BD'}
+    'Siluk':{'num': "2",'family' : trope_constants.SILUK_TROPE_LIST, 'tunes': trope_constants.SILUK_TROPE_TUNES,'loop' : 0,'anchor' : u'\u05BD'}
     	,
-    'Ytiv' : {'num': "3",'family' : trope_constants.YTIV_TROPE_LIST, 'loop' : 0, 'anchor' : u'\u059A'}
+    'Ytiv' : {'num': "3",'family' : trope_constants.YTIV_TROPE_LIST, 'tunes': trope_constants.YTIV_TROPE_TUNES,'loop' : 0, 'anchor' : u'\u059A'}
     	,
-    'Katon':{'num': "3",'family' : trope_constants.KATON_TROPE_LIST, 'loop' : 0, 'anchor' : u'\u0594'}
+    'Katon':{'num': "3",'family' : trope_constants.KATON_TROPE_LIST, 'tunes': trope_constants.KATON_TROPE_TUNES,'loop' : 0, 'anchor' : u'\u0594'}
     	,
-    'K-Vazla':{'num': "7",'family' : trope_constants.KVAZLA_TROPE, 'loop' : 0, 'anchor' : u'\u059C'}
+    'K-Vazla':{'num': "7",'family' : trope_constants.KVAZLA_TROPE, 'tunes': trope_constants.KVAZLA_TROPE_TUNE,'loop' : 0, 'anchor' : u'\u059C'}
     	,
-    'Geresh':{'num': "7",'family' : trope_constants.GERESH_TROPE, 'loop' : 0, 'anchor' : u'\u059C'}
+    'Geresh':{'num': "7",'family' : trope_constants.GERESH_TROPE, 'tunes': trope_constants.GERESH_TROPE_TUNE,'loop' : 0, 'anchor' : u'\u059C'}
     	,
-    'Rvii':{'num': "4",'family' : trope_constants.RVII_TROPE_LIST, 'loop' : 0, 'anchor' : u'\u0597'}
+    'Rvii':{'num': "4",'family' : trope_constants.RVII_TROPE_LIST, 'tunes': trope_constants.RVII_TROPE_TUNE,'loop' : 0, 'anchor' : u'\u0597'}
     	,
-    'Gershayim':{'num': "9",'family' : trope_constants.GERSHAYIM_TROPE, 'loop' : 0, 'anchor' : u'\u059E'}
+    'Gershayim':{'num': "9",'family' : trope_constants.GERSHAYIM_TROPE, 'tunes': trope_constants.GERSHAYIM_TROPE_TUNE,'loop' : 0, 'anchor' : u'\u059E'}
     	,
-    'Tvir':{'num': "6",'family' : trope_constants.TVIR_TROPE_LIST, 'loop' : 0, 'anchor' : u'\u059B'}
+    'Tvir':{'num': "6",'family' : trope_constants.TVIR_TROPE_LIST, 'tunes': trope_constants.TVIR_TROPE_TUNES,'loop' : 0, 'anchor' : u'\u059B'}
     	,
-    'Darga' :{'num': "6",'family' : trope_constants.DARGA_TROPE, 'loop' : 0, 'anchor' : u'\u05A7'}
+    'Darga' :{'num': "6",'family' : trope_constants.DARGA_TROPE, 'tunes': trope_constants.DARGA_TROPE_TUNE,'loop' : 0, 'anchor' : u'\u05A7'}
     	,
-    'Pazer':{'num': "1",'family' : trope_constants.PAZER_TROPE, 'loop' : 0, 'anchor' : u'\u05A1'}
+    'Pazer':{'num': "1",'family' : trope_constants.PAZER_TROPE, 'tunes': trope_constants.PAZER_TROPE_TUNE,'loop' : 0, 'anchor' : u'\u05A1'}
     	,
-    'Zakef_Gadol' :{'num': "5",'family' : trope_constants.ZAKEF_GADOL_TROPE, 'loop' : 0, 'anchor' : u'\u0595'}
+    'Zakef_Gadol' :{'num': "5",'family' : trope_constants.ZAKEF_GADOL_TROPE, 'tunes': trope_constants.ZAKEF_GADOL_TROPE_TUNE,'loop' : 0, 'anchor' : u'\u0595'}
     	,
-    'Segol' :{'num': "8",'family' : trope_constants.SEGOL_TROPE_LIST, 'loop' : 0, 'anchor' : u'\u0592'}
+    'Segol' :{'num': "8",'family' : trope_constants.SEGOL_TROPE_LIST, 'tunes': trope_constants.SEGOL_TROPE_TUNES,'loop' : 0, 'anchor' : u'\u0592'}
     	,
-    'Tlisha_G' : {'num': "10",'family' : trope_constants.TLISHA_GDOLA_TROPE_LIST, 'loop' : 0, 'anchor' : u'\u05A0'}
+    'Tlisha_G' : {'num': "10",'family' : trope_constants.TLISHA_GDOLA_TROPE_LIST, 'tunes': trope_constants.TLISHA_GDOLA_TROPE_TUNES,'loop' : 0, 'anchor' : u'\u05A0'}
     	,
-    'Tlisha_K' : {'num': "10",'family' : trope_constants.TLISHA_KTANA_TROPE_LIST, 'loop' : 0, 'anchor' : u'\u05A9'}
+    'Tlisha_K' : {'num': "10",'family' : trope_constants.TLISHA_KTANA_TROPE_LIST, 'tunes': trope_constants.TLISHA_KTANA_TROPE_TUNES,'loop' : 0, 'anchor' : u'\u05A9'}
     	,
-    'Shalshelet':{'num': "12",'family' : trope_constants.SHALSHELET_TROPE, 'loop' : 0, 'anchor' : u'\u0593'}
+    'Shalshelet':{'num': "12",'family' : trope_constants.SHALSHELET_TROPE, 'tunes': trope_constants.SHALSHELET_TROPE_TUNE,'loop' : 0, 'anchor' : u'\u0593'}
     }
     return highlight_dict
 
