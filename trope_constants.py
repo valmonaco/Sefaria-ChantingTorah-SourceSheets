@@ -36,7 +36,7 @@ SILUK4_8 = u'\u05BD' + u'\u0596'
 SILUK4_8 = SILUK4_8[::-1]
 
 SILUK_TROPE_LIST = [SILUK,SILUK4_8,SILUK3_7,SILUK2_6,SILUK1_5]
-SILUK_TROPE_TUNES = ["none", "2019/08/Trope-4-1.mp3", "2019/08/Trope-3-1.mp3", "2018/01/Trope-2-1.mp3","2018/01/Trope-1.mp3"]
+SILUK_TROPE_TUNES = ["none", "2019/08/Trope-4-1.mp3", "2019/08/Trope-3-1.mp3", "2019/08/Trope-2-1.mp3","2018/01/Trope-1.mp3"]
 
 
 YTIV1_32 = u'\u0594'+ u'\u05A3' + u'\u059A'

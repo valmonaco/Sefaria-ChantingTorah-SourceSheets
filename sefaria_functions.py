@@ -86,8 +86,6 @@ def generate_sheet(Book_Chapter, StartVerse, EndVerse):
 
                     sheet_json["sources"].append(ref_object)
 
-                    #media_object={}
-                    #media_object["media"] = "https://tbeboca.org/wp-content/Audio/DEUTERONOMY/TORAH/Torah%20V-Zot%20HaBracha/TORAH_V'zot_HaBracha_V5.mp3"
 
                     highlighted_text_object={}
                     just_trope_str = extract_trope_characters(Sefaria_Torah_verseJSON['he'])
@@ -103,8 +101,15 @@ def generate_sheet(Book_Chapter, StartVerse, EndVerse):
                     highlighted_text_object["outsideText"]= highlighted_verse
                     sheet_json["sources"].append(highlighted_text_object)
 
+                    comment_object={}
+                    comment_object["comment"]= "<p><small>Trope Tunes (1st audio file corresponds to 1st highlighted trope).<br/> Trope Tunes awaiting permission of Northern Virginia Hebrew Congregation and Cantor Caro.</small></p>"
+                    sheet_json["sources"].append(comment_object)
 
-                    #sheet_json["sources"].append(media_object)
+                    media_object={}
+                    for tune in tune_list:
+                        if tune != "none":
+                            media_object["media"] = "http://www.nvhcreston.org/wp-content/uploads/" + tune
+                            sheet_json["sources"].append(media_object)
 
                     sheet_json["options"] = {
                         "numbered": 0,
