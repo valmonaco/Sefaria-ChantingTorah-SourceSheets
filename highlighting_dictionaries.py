@@ -23,10 +23,10 @@ def create_highlight_dict():
     	,
     'Gershayim':{'num': "9",'family' : trope_constants.GERSHAYIM_TROPE, 'tunes': trope_constants.GERSHAYIM_TROPE_TUNE,'loop' : 0, 'anchor' : u'\u059E'}
     	,
-    'Tvir':{'num': "6",'family' : trope_constants.TVIR_TROPE_LIST, 'tunes': trope_constants.TVIR_TROPE_TUNES,'loop' : 0, 'anchor' : u'\u059B'}
+    'Tvir_Darga':{'num': "6",'family' : trope_constants.TVIR_DARGA_TROPE_LIST, 'tunes': trope_constants.TVIR_DARGA_TROPE_TUNES,'loop' : 0, 'anchor' : u'\u059B'}
     	,
-    'Darga' :{'num': "6",'family' : trope_constants.DARGA_TROPE, 'tunes': trope_constants.DARGA_TROPE_TUNE,'loop' : 0, 'anchor' : u'\u05A7'}
-    	,
+    #'Darga' :{'num': "6",'family' : trope_constants.DARGA_TROPE, 'tunes': trope_constants.DARGA_TROPE_TUNE,'loop' : 0, 'anchor' : u'\u05A7'}
+    #	,
     'Pazer':{'num': "1",'family' : trope_constants.PAZER_TROPE, 'tunes': trope_constants.PAZER_TROPE_TUNE,'loop' : 0, 'anchor' : u'\u05A1'}
     	,
     'Zakef_Gadol' :{'num': "5",'family' : trope_constants.ZAKEF_GADOL_TROPE, 'tunes': trope_constants.ZAKEF_GADOL_TROPE_TUNE,'loop' : 0, 'anchor' : u'\u0595'}
