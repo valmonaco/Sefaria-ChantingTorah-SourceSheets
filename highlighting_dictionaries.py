@@ -11,9 +11,9 @@ def create_highlight_dict():
     	,
     'Siluk':{'num': "2",'family' : trope_constants.SILUK_TROPE_LIST, 'tunes': trope_constants.SILUK_TROPE_TUNES,'loop' : 0,'anchor' : u'\u05BD'}
     	,
-    'Ytiv' : {'num': "3",'family' : trope_constants.YTIV_TROPE_LIST, 'tunes': trope_constants.YTIV_TROPE_TUNES,'loop' : 0, 'anchor' : u'\u059A'}
-    	,
-    'Katon':{'num': "3",'family' : trope_constants.KATON_TROPE_LIST, 'tunes': trope_constants.KATON_TROPE_TUNES,'loop' : 0, 'anchor' : u'\u0594'}
+ #   'Ytiv' : {'num': "3",'family' : trope_constants.YTIV_TROPE_LIST, 'tunes': trope_constants.YTIV_TROPE_TUNES,'loop' : 0, 'anchor' : u'\u059A'}
+ #   	,
+    'Ytiv_Katon':{'num': "3",'family' : trope_constants.YTIV_KATON_TROPE_LIST, 'tunes': trope_constants.YTIV_KATON_TROPE_TUNES,'loop' : 0, 'anchor' : u'\u0594'}
     	,
     'K-Vazla':{'num': "7",'family' : trope_constants.KVAZLA_TROPE, 'tunes': trope_constants.KVAZLA_TROPE_TUNE,'loop' : 0, 'anchor' : u'\u059C'}
     	,

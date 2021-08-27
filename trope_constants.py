@@ -46,7 +46,7 @@ YTIV2_33 = u'\u0594' + u'\u059A'
 YTIV2_33  = YTIV2_33[::-1]
 
 YTIV_TROPE_LIST = [YTIV2_33,YTIV1_32]
-YTIV_TROPE_TUNES = ["none","none"]
+YTIV_TROPE_TUNES = ["2019/08/Trope-17-1.mp3","2019/08/Trope-16-1.mp3"]
 
 
 KATON = u'\u0594'
@@ -74,8 +74,8 @@ KATONX1_notlisted  = KATONX1_notlisted[::-1]
 KATON6_14 = u'\u0594' + u'\u05A3' + u'\u0599'+ u'\u05A4'+ u'\u05A3'
 KATON6_14 = KATON6_14[::-1]
 
-KATON_TROPE_LIST = [KATON,KATONX1_notlisted,KATON5_13, KATON4_12, KATON3_11, KATON2_10, KATON1_9, KATON1_9d, KATON6_14]
-KATON_TROPE_TUNES = ["none","none","2019/08/Trope-15-1.mp3","2019/08/Trope-14-1.mp3","2019/08/Trope-13-1.mp3","2019/08/Trope-12-1.mp3","2019/08/Trope-10-1.mp3","none","2019/08/Trope-11-1.mp3"]
+YTIV_KATON_TROPE_LIST = [KATON,KATONX1_notlisted,YTIV2_33,YTIV1_32,KATON5_13, KATON4_12, KATON3_11, KATON2_10, KATON1_9, KATON1_9d, KATON6_14]
+YTIV_KATON_TROPE_TUNES = ["none","none","2019/08/Trope-17-1.mp3","2019/08/Trope-16-1.mp3","2019/08/Trope-15-1.mp3","2019/08/Trope-14-1.mp3","2019/08/Trope-13-1.mp3","2019/08/Trope-12-1.mp3","2019/08/Trope-10-1.mp3","none","2019/08/Trope-11-1.mp3"]
 
 
 KVAZLA= u'\u059C' + u'\u05A8'
