@@ -75,7 +75,7 @@ KATON6_14 = u'\u0594' + u'\u05A3' + u'\u0599'+ u'\u05A4'+ u'\u05A3'
 KATON6_14 = KATON6_14[::-1]
 
 KATON_TROPE_LIST = [KATON,KATONX1_notlisted,KATON5_13, KATON4_12, KATON3_11, KATON2_10, KATON1_9, KATON1_9d, KATON6_14]
-KATON_TROPE_TUNES = ["none","none",         "none",    "none",    "none",    "none",    "none",   "none",    "none"]
+KATON_TROPE_TUNES = ["none","none","2019/08/Trope-15-1.mp3","2019/08/Trope-14-1.mp3","2019/08/Trope-13-1.mp3","2019/08/Trope-12-1.mp3","2019/08/Trope-10-1.mp3","none","2019/08/Trope-11-1.mp3"]
 
 
 KVAZLA= u'\u059C' + u'\u05A8'
