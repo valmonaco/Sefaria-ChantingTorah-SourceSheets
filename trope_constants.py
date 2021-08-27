@@ -98,7 +98,7 @@ RVII2_18 =RVII2_18[::-1]
 RVII3_19 = u'\u0597'
 
 RVII_TROPE_LIST = [RVII3_19,RVII2_18, RVII1_17]
-RVII_TROPE_TUNE=["none",    "none",    "none"]
+RVII_TROPE_TUNE=["2019/08/Trope-28.mp3", "2019/08/Trope-27.mp3","2019/08/Trope-26.mp3"]
 
 
 GERSHAYIM1_20 = u'\u059E'
@@ -128,7 +128,7 @@ TVIR6_27 = u'\u059B' + u'\u05A7' + u'\u05A3'
 TVIR6_27  = TVIR6_27[::-1]
 
 #TVIR_TROPE_LIST = [TVIR1_22,TVIR2_23,TVIR3_24,TVIR3a_24a,TVIR4_25,TVIR5_26,TVIR6_27]
-#TVIR_TROPE_TUNES = ["2019/08/Trope-21-1-1.mp3", "2019/08/Trope-20-1.mp3",  "2019/08/Trope-22-1-1.mp3", "2019/08/Trope-23-1.mp3", "2019/08/Trope-18-1.mp3",  "none",  "2019/08/Trope-19-1.mp3"]
+#TVIR_TROPE_TUNES = ["2019/08/Trope-21-1-1.mp3", "2019/08/Trope-20-1.mp3",  "none", "2019/08/Trope-23-1.mp3", "2019/08/Trope-18-1.mp3",  "none",  "2019/08/Trope-19-1.mp3"]
 
 
 DARGA1_21 = u'\u05A7'
@@ -136,7 +136,7 @@ DARGA1_21 = u'\u05A7'
 #DARGA_TROPE_TUNE=["none"]
 
 TVIR_DARGA_TROPE_LIST = [DARGA1_21,TVIR1_22,TVIR2_23,TVIR3_24,TVIR3a_24a,TVIR4_25,TVIR5_26,TVIR6_27]
-TVIR_DARGA_TROPE_TUNES = ["none","2019/08/Trope-21-1-1.mp3", "2019/08/Trope-20-1.mp3",  "2019/08/Trope-22-1-1.mp3", "2019/08/Trope-23-1.mp3", "2019/08/Trope-18-1.mp3",  "none",  "2019/08/Trope-19-1.mp3"]
+TVIR_DARGA_TROPE_TUNES = ["none","2019/08/Trope-21-1-1.mp3", "2019/08/Trope-20-1.mp3",  "none", "2019/08/Trope-23-1.mp3", "2019/08/Trope-18-1.mp3",  "none",  "2019/08/Trope-19-1.mp3"]
 
 
 PAZER1_30 = u'\u05A1'+ u'\u05A3'

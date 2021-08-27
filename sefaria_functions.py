@@ -112,6 +112,10 @@ def generate_sheet(Book_Chapter, StartVerse, EndVerse):
                         if tune != "none":
                             media_object["media"] = "http://www.nvhcreston.org/wp-content/uploads/" + tune
                             sheet_json["sources"].append(media_object)
+                        else:
+                            comment_object={}
+                            comment_object["comment"]= "<p><small>Missing trope tune in verse.</small></p>"
+                            sheet_json["sources"].append(comment_object)
 
                     sheet_json["options"] = {
                         "numbered": 0,
