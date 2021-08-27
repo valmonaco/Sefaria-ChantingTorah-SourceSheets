@@ -165,7 +165,7 @@ SEGOL4_37=  u'\u0592' + u'\u05AE'
 SEGOL4_37 = SEGOL4_37[::-1]
 
 SEGOL_TROPE_LIST = [SEGOL,SEGOL4_37,SEGOL3_36,SEGOL2_35,SEGOL1_34]
-SEGOL_TROPE_TUNES = ["none", "none", "none",   "none",  "none"]
+SEGOL_TROPE_TUNES = ["none", "2019/08/Trope-33.mp3", "2019/08/Trope-32.mp3",   "2019/08/Trope-31.mp3",  "2019/08/Trope-30.mp3"]
 
 
 TLISHA_GDOLA1_28 = u'\u05A0' + u'\u05A0' + u'\u05A3'
