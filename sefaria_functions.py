@@ -105,8 +105,10 @@ def generate_sheet(Book_Chapter, StartVerse, EndVerse):
                     comment_object["comment"]= "<p><small>Trope Tunes (1st audio file corresponds to 1st highlighted trope).<br/> Trope Tunes awaiting permission of Northern Virginia Hebrew Congregation and Cantor Caro.</small></p>"
                     sheet_json["sources"].append(comment_object)
 
-                    media_object={}
+
                     for tune in tune_list:
+                        print(tune)
+                        media_object={}
                         if tune != "none":
                             media_object["media"] = "http://www.nvhcreston.org/wp-content/uploads/" + tune
                             sheet_json["sources"].append(media_object)

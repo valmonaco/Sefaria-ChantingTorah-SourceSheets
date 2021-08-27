@@ -19,7 +19,7 @@ ETNACHTA4_4 = u'\u0591'+ u'\u0596'
 ETNACHTA4_4 = ETNACHTA4_4[::-1]
 
 ETNACHTA_TROPE_LIST = [ETNACHTA,ETNACHTA4_4,ETNACHTA3_3,ETNACHTA2_2,ETNACHTA1_1]
-ETNACHTA_TROPE_TUNES =["none",  "none",      "none",     "none",     "none"]
+ETNACHTA_TROPE_TUNES =["none","2019/08/Trope-9-1.mp3","2019/08/Trope-8-1.mp3","2019/08/Trope-7-1.mp3","2019/08/Trope-6-1.mp3"]
 
 
 SILUK= u'\u05BD'
