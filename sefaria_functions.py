@@ -2,7 +2,7 @@ import requests, json
 from flask import current_app as app, flash, session, Markup
 import urllib as urllib2
 from trope_highlighting import extract_trope_characters, map_trope_placement, set_loop_counts, loop_through_trope_patterns
-
+from retrieve_verse_audio_file import retrieve_audio
 
 def retrieve_Verse(verse) -> str:
     #verse_span = Book_Chapter + str(StartVerse) + "-" + str(EndVerse)
@@ -57,11 +57,14 @@ def generate_sheet(Book_Chapter, StartVerse, EndVerse):
 
     else:
 
+        Torah_Audio_Files=retrieve_audio(Book_Chapter,StartVerse,EndVerse)
+
         for i in range(0,(EndVerse-StartVerse)+1):
             if error_detected==False:
 
                 verse_span = Book_Chapter + str(StartVerse+i) + "-" + str(StartVerse+i)
                 Sefaria_Torah_verseJSON=retrieve_Verse(verse_span)
+
 
                 if valid_ref(Sefaria_Torah_verseJSON) and (not(len(Sefaria_Torah_verseJSON['he'])==0)):
                     session.pop('_flashes', None)
@@ -116,6 +119,14 @@ def generate_sheet(Book_Chapter, StartVerse, EndVerse):
                             comment_object={}
                             comment_object["comment"]= "<p><small>Missing trope tune in verse.</small></p>"
                             sheet_json["sources"].append(comment_object)
+
+                    comment_object={}
+                    comment_object["comment"]= "<p><small>Full Verse Chanted</small></p>"
+                    sheet_json["sources"].append(comment_object)
+
+                    media_object={}
+                    media_object["media"] = Torah_Audio_Files[i]
+                    sheet_json["sources"].append(media_object)
 
                     sheet_json["options"] = {
                         "numbered": 0,
