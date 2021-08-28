@@ -15,9 +15,9 @@ def create_highlight_dict():
  #   	,
     'Ytiv_Katon':{'num': "3",'family' : trope_constants.YTIV_KATON_TROPE_LIST, 'tunes': trope_constants.YTIV_KATON_TROPE_TUNES,'loop' : 0, 'anchor' : u'\u0594'}
     	,
-    'K-Vazla':{'num': "7",'family' : trope_constants.KVAZLA_TROPE, 'tunes': trope_constants.KVAZLA_TROPE_TUNE,'loop' : 0, 'anchor' : u'\u059C'}
-    	,
-    'Geresh':{'num': "7",'family' : trope_constants.GERESH_TROPE, 'tunes': trope_constants.GERESH_TROPE_TUNE,'loop' : 0, 'anchor' : u'\u059C'}
+ #  'K-Vazla':{'num': "7",'family' : trope_constants.KVAZLA_TROPE, 'tunes': trope_constants.KVAZLA_TROPE_TUNE,'loop' : 0, 'anchor' : u'\u059C'}
+ #   	,
+    'Geresh_KVazla':{'num': "7",'family' : trope_constants.GERESH_KVAZLA_TROPE, 'tunes': trope_constants.GERESH_KVAZLA_TROPE_TUNE,'loop' : 0, 'anchor' : u'\u059C'}
     	,
     'Rvii':{'num': "4",'family' : trope_constants.RVII_TROPE_LIST, 'tunes': trope_constants.RVII_TROPE_TUNE,'loop' : 0, 'anchor' : u'\u0597'}
     	,
