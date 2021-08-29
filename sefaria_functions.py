@@ -48,7 +48,7 @@ def publish_sheet(values)->str:
         flash(error_message)
 
 
-def generate_sheet(Book_Chapter, StartVerse, EndVerse):
+def generate_sheet(Book, Chapter, StartVerse, EndVerse):
     flash("here we go!")
     error_detected=False
 
@@ -57,11 +57,12 @@ def generate_sheet(Book_Chapter, StartVerse, EndVerse):
 
     else:
 
-        Torah_Audio_Files=retrieve_audio(Book_Chapter,StartVerse,EndVerse)
+        Torah_Audio_Files=retrieve_audio(Book, Chapter,StartVerse,EndVerse)
 
         for i in range(0,(EndVerse-StartVerse)+1):
             if error_detected==False:
 
+                Book_Chapter = str(Book) + " " + str(Chapter) + ":"
                 verse_span = Book_Chapter + str(StartVerse+i) + "-" + str(StartVerse+i)
                 Sefaria_Torah_verseJSON=retrieve_Verse(verse_span)
 

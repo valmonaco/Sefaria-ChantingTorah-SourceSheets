@@ -62,9 +62,8 @@ def create():
                 Chapter = form.chapter.data
                 StartVerse = form.startingVerse.data
                 EndVerse = form.endingVerse.data
-                Book_Chapter = str(Book) + " " + str(Chapter) + ":"
 
-                generate_sheet(Book_Chapter, StartVerse, EndVerse)
+                generate_sheet(Book, Chapter, StartVerse, EndVerse)
 
                 #flash('Sefaria Feedback: ' + query_Sefaria_Reference(verse) ,'success')
                 #return redirect(url_for('create'))
