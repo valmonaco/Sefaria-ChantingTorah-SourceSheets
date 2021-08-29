@@ -53,3 +53,10 @@ def register():
 def login():
     return render_template('login.html', title='Login')
 
+@app.route('/roadmap')
+def roadmap():
+    return render_template('roadmap.html', title='Roadmap')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html', title='Contact')
