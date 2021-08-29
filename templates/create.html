@@ -21,6 +21,7 @@
                     <div>Enter ending verse:</div>
                     {{ form.endingVerse }}
                     <br/><br/>
+                    {{ recaptcha }} <!-- Refer to 'recaptcha' variable in main.py -->
                     {{ form.submit(class="btn btn-outline-info") }}
                 </div>
             </fieldset>

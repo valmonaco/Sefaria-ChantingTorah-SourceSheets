@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*
+
 from flask import Flask, render_template, url_for, flash, redirect, request
 from forms import RegistrationForm, LoginForm, CreateForm
 from sourcesheet_actions import customize
 from sefaria_functions import generate_sheet
 
+from flask_recaptcha import ReCaptcha # Import ReCaptcha object
+
 app = Flask(__name__, instance_relative_config=True)
 app.config.from_pyfile('config.py')
+recaptcha = ReCaptcha(app) # Create a ReCaptcha object by passing in 'app' as parameter
 
 s_sheets = [
     {
@@ -49,21 +53,25 @@ def login():
 @app.route('/create', methods=['GET','POST'])
 def create():
     form=CreateForm()
-    if form.validate_on_submit():
 
-        Book = form.Torah_Book_Field.data
-        Chapter = form.chapter.data
-        StartVerse = form.startingVerse.data
-        EndVerse = form.endingVerse.data
-        Book_Chapter = str(Book) + " " + str(Chapter) + ":"
+    if request.method == 'POST': # Check to see if flask.request.method is POST
+        if recaptcha.verify(): # Use verify() method to see if ReCaptcha is filled out
+            if form.validate_on_submit():
 
-        generate_sheet(Book_Chapter, StartVerse, EndVerse)
+                Book = form.Torah_Book_Field.data
+                Chapter = form.chapter.data
+                StartVerse = form.startingVerse.data
+                EndVerse = form.endingVerse.data
+                Book_Chapter = str(Book) + " " + str(Chapter) + ":"
 
+                generate_sheet(Book_Chapter, StartVerse, EndVerse)
 
-        #flash('Sefaria Feedback: ' + query_Sefaria_Reference(verse) ,'success')
-        #return redirect(url_for('create'))
+                #flash('Sefaria Feedback: ' + query_Sefaria_Reference(verse) ,'success')
+                #return redirect(url_for('create'))
 
-        #flash(customize(verse))
-        #return redirect(url_for('home'))
+                #flash(customize(verse))
+                #return redirect(url_for('home'))
+        else:
+                flash('If you are not a robot, go ahead and check the box.')
     return render_template('create.html', title='Create Source Sheet', form=form)
 
