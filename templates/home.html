@@ -1,17 +1,30 @@
 {% extends "layout.html" %}
 {% block content %}
-    {% for s_sheet in s_sheets%}
-
-    <article class="media content-section">
-      <div class="media-body">
-        <div class="article-metadata">
-          <a href="#">{{s_sheet.Created_By}}</a>
-          <small class="text-muted">{{s_sheet.Created_On}}</small>
-        </div>
-        <h2><a class="article-title" href="#">{{ s_sheet.Torah_Verses }}</a></h2>
-        <p class="article-content">_</p>
-      </div>
-    </article>
-
-    {% endfor %}
+    <h1>SCTSS  |  Create Source Sheet</h1>
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.csrf_token }}
+            {% if form.csrf_token.errors %}
+                <div class="warning">Welcome back... please refresh this page before continuing.</div>
+            {% endif %}
+            <fieldset class="form-group">
+                <div class="form-group">
+                    <div>Select Book from Torah:</div>
+                    {{ form.Torah_Book_Field }}
+                    <br/><br/>
+                    <div>Enter chapter:</div>
+                    {{ form.chapter }}
+                    <br/><br/>
+                    <div>Enter starting verse:</div>
+                    {{ form.startingVerse }}
+                    <br/><br/>
+                    <div>Enter ending verse:</div>
+                    {{ form.endingVerse }}
+                    <br/><br/>
+                    {{ recaptcha }} <!-- Refer to 'recaptcha' variable in main.py -->
+                    {{ form.submit(class="btn btn-outline-info") }}
+                </div>
+            </fieldset>
+        </form>
+    </div>
 {% endblock content %}
