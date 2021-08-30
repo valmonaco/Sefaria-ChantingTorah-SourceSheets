@@ -23,7 +23,7 @@
         <header class="site-header">
           <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
             <div class="container">
-              <a class="navbar-brand mr-4" href="/">SCTSS</a>
+              <a class="navbar-brand mr-8" href="/">Torah Chanting Source Sheet Generator</a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -58,20 +58,24 @@
             </div>
             <div class="col-md-4">
               <div class="content-section">
-                <h3>Our Sidebar</h3>
-                <p class='text-muted'>You can put any information here you'd like.
                   <ul class="list-group">
-                    <li class="list-group-item list-group-item-light">Latest Posts</li>
-                    <li class="list-group-item list-group-item-light">Announcements</li>
-                    <li class="list-group-item list-group-item-light">Calendars</li>
-                    <li class="list-group-item list-group-item-light">etc</li>
+                    <li class="list-group-item list-group-item-light"></li>
+                    <li class="list-group-item list-group-item-light">"<i>Talmud Torah kneged kulam</i>" (<a href="https://www.sefaria.org/Mishnah_Peah.1.1?lang=bi">Mishnah Peah 1:1</a>). This teaching is generally understood to mean that the study of Torah is equal to all other mitzvoth combined. The reason this is so is because the study of Torah "leads to action" (<a href="https://www.sefaria.org/Kiddushin.40b.1?lang=bi">Kiddushin 40b</a>)..." -from <a href="https://torahinmotion.org/discussions-and-blogs/yevamot-109-torah-study">Torah in Motion</a></li>
+                    <li class="list-group-item list-group-item-light"></li>
+                    <li class="list-group-item list-group-item-light">"Chanting evokes the consciousness of using our voices as a link to antiquity, a profound sense of belonging to a historical continuum, a connection to the Divine." -from <i><a href="https://www.chantingthehebrewbible.com/books">Chanting the Hebrew Bible</a></i></li>
+                    <li class="list-group-item list-group-item-light"></li>
                   </ul>
                 </p>
               </div>
             </div>
           </div>
         </main>
-
+        <div id="footer">
+        {% block footer %}
+        <div class="container">
+        Privacy and Terms of Use
+        </div>
+        {% endblock %}
         <!-- Optional JavaScript; choose one of the two! -->
 
         <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -79,3 +83,5 @@
 
     </body>
 </html>
+
+

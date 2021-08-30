@@ -1,6 +1,19 @@
 {% extends "layout.html" %}
 {% block content %}
-    <h1>SCTSS  |  Create Source Sheet</h1>
+    <div class="content-section">
+        <p>Welcome! If you are preparing to chant Torah, we've got something for you.
+        The form on this page will bring together Torah text and audio on a customized Sefaria
+        source sheet. This is only possible through the power of Sefaria and the amazing
+        work of Cantor Wendy Shermet (Temple Israel, Omaha NE). If you find these free resources helpful,
+        please consider expressing your appreciation through a donation to
+        <a href="https://sefaria.nationbuilder.com/supportsefaria">Sefaria</a>
+        and the <a href="https://www.templeisraelomaha.com/payment.php">Cantor Shermet Music Fund</a> at Temple Israel.
+       </p>
+       <p>
+        A few caveats: The current trope cantillation (Binder/Schleifer) is from the Reform Judaism tradition (although including additional cantillation
+        styles is on <a href="../roadmap.html">roadmap</a>). The number of verses that can be added to a single sheet
+        is capped at four. Please indicate if the ending verse is the end of an <i>aliyah</i>.
+    </div>
     <div class="content-section">
         <form method="POST" action="">
             {{ form.csrf_token }}
