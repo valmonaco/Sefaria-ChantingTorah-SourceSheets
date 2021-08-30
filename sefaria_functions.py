@@ -31,14 +31,15 @@ def publish_sheet(values)->str:
         responseJSON = response.json()
         #print(response.text)
         session.pop('_flashes', None)
-        flash("A link to your Sefaria Torah Chanting sheet will appear soon.")
+        flash("Shhh!  We are in stealth mode pending Sefaria approval.")
+        flash("This link won't be around forever and can't be searched for.")
 
         new_sheet_url = "https://val.cauldron.sefaria.org/sheets/" + str(responseJSON["id"]) + "?lang=bi"
         response = requests.get(new_sheet_url)
         while response.status_code != 200:
             response = requests.get(new_sheet_url)
 
-        link_text = "<a href=\"" + new_sheet_url + "\" target=\"_blank\">Link to Source Sheet</a>"
+        link_text = "<a href=\"" + new_sheet_url + "\" target=\"_blank\">"+ new_sheet_url + "</a>"
         link = Markup(link_text)
         flash(link)
 
@@ -49,15 +50,16 @@ def publish_sheet(values)->str:
 
 
 def generate_sheet(Book, Chapter, StartVerse, EndVerse):
-    flash("here we go!")
     error_detected=False
 
     if (StartVerse > EndVerse):
-        flash("Whoops! Starting verse must be before ending verse.")
+        link_text = "<a href=\"../home\">Try again.</a>"
+        link = Markup(link_text)
+        #flash(link)
+        flash("Whoops! Starting verse must be before ending verse. " + link)
 
     else:
 
-        Torah_Audio_Files=retrieve_audio(Book, Chapter,StartVerse,EndVerse)
 
         for i in range(0,(EndVerse-StartVerse)+1):
             if error_detected==False:
@@ -68,8 +70,7 @@ def generate_sheet(Book, Chapter, StartVerse, EndVerse):
 
 
                 if valid_ref(Sefaria_Torah_verseJSON) and (not(len(Sefaria_Torah_verseJSON['he'])==0)):
-                    session.pop('_flashes', None)
-                    flash("Pulling together your customized sheet.")
+                    Torah_Audio_Files=retrieve_audio(Book, Chapter,StartVerse,EndVerse)
                     if i == 0:
                         sheet_json = {}
                         sheet_json["status"] = "public"
@@ -159,7 +160,13 @@ def generate_sheet(Book, Chapter, StartVerse, EndVerse):
                     else:
                         print("first verse found to be invalid")
                         #flash("len(Sefaria_Torah_verseJSON['he'])" + str(len(Sefaria_Torah_verseJSON['he'])))
-                        flash(verse_span + " does not appear in the Torah.")
+                        #flash(verse_span + " does not appear in the Torah.")
+
+                        link_text = "<a href=\"../home\">Try again.</a>"
+                        link = Markup(link_text)
+                        #flash(link)
+                        flash(verse_span + " does not appear in the Torah. " + link)
+
                         error_detected=True
 
                         #flash(Sefaria_Torah_verseJSON["error"])

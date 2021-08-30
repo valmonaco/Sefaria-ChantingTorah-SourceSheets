@@ -13,6 +13,7 @@
         A few caveats: The current trope cantillation (Binder/Schleifer) is from the Reform Judaism tradition (although including additional cantillation
         styles is on <a href="../roadmap.html">roadmap</a>). The number of verses that can be added to a single sheet
         is capped at four. Please indicate if the ending verse is the end of an <i>aliyah</i>.
+        </p>
     </div>
     <div class="content-section">
         <form method="POST" action="">
@@ -35,9 +36,15 @@
                     {{ form.endingVerse }}
                     <br/><br/>
                     {{ recaptcha }} <!-- Refer to 'recaptcha' variable in main.py -->
+                     <br/>
                     {{ form.submit(class="btn btn-outline-info") }}
                 </div>
             </fieldset>
         </form>
+    </div>
+    <div class="content-section">
+        <p><b>Please note:</b>  It takes awhile for the source sheet to come together and be available in
+        Sefaria.  Once the source sheet is ready, a new page will be shown with a link to the sheet.
+        </p>
     </div>
 {% endblock content %}

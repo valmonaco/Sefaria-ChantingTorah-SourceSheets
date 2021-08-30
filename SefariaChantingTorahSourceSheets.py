@@ -32,7 +32,7 @@ def home():
                 #return redirect(url_for('create'))
 
                 #flash(customize(verse))
-                #return redirect(url_for('home'))
+                return redirect(url_for('submission_info'))
         else:
                 flash('If you are not a robot, go ahead and check the box.')
     return render_template('home.html', title='Create Source Sheet', form=form)
@@ -60,3 +60,8 @@ def roadmap():
 @app.route('/contact')
 def contact():
     return render_template('contact.html', title='Contact')
+
+@app.route('/submission_info')
+def submission_info():
+    return render_template('submission_info.html', title='Submission Info')
+
