@@ -25,14 +25,13 @@ def valid_ref(retrieved_JSON):
         return False
 
 
-def publish_sheet(values)->str:
+def publish_sheet(values, capped_verses)->str:
     try:
         response = requests.post(app.config['POST_URL'], data=values)
         responseJSON = response.json()
         #print(response.text)
         session.pop('_flashes', None)
-        flash("Shhh!  We are in stealth mode pending Sefaria approval.")
-        flash("This link won't be around forever and can't be searched for.")
+        flash("Shhh!  We are in stealth mode pending Sefaria approval. This link won't be around forever and can't be searched for.")
 
         new_sheet_url = "https://val.cauldron.sefaria.org/sheets/" + str(responseJSON["id"]) + "?lang=bi"
         response = requests.get(new_sheet_url)
@@ -43,6 +42,8 @@ def publish_sheet(values)->str:
         link = Markup(link_text)
         flash(link)
 
+        flash(capped_verses)
+
     except urllib2.error.HTTPError as e:
         error_message = e.read()
         #print(error_message)
@@ -51,6 +52,7 @@ def publish_sheet(values)->str:
 
 def generate_sheet(Book, Chapter, StartVerse, EndVerse):
     error_detected=False
+    capped_verses=""
 
     if (StartVerse > EndVerse):
         link_text = "<a href=\"../home\">Try again.</a>"
@@ -60,6 +62,9 @@ def generate_sheet(Book, Chapter, StartVerse, EndVerse):
 
     else:
 
+        if EndVerse - StartVerse >= 4:
+            capped_verses = "ps. You requested " + str(EndVerse-StartVerse) + " verses, but we provided only the first 4 requested verses in this sheet."
+            EndVerse = StartVerse + 3
 
         for i in range(0,(EndVerse-StartVerse)+1):
             if error_detected==False:
@@ -153,7 +158,7 @@ def generate_sheet(Book, Chapter, StartVerse, EndVerse):
                         sheet_content = json.dumps(sheet_json)
                         values = {'json': sheet_content, 'apikey': app.config['API_KEY']}
 
-                        publish_sheet(values)
+                        publish_sheet(values,capped_verses)
                         error_detected=True
 
 
@@ -176,6 +181,5 @@ def generate_sheet(Book, Chapter, StartVerse, EndVerse):
             sheet_json["title"] = title
             sheet_content = json.dumps(sheet_json)
             values = {'json': sheet_content, 'apikey': app.config['API_KEY']}
-            flash("Getting ready to put everything into a source sheet. This can sometimes take awhile.")
-            publish_sheet(values)
+            publish_sheet(values, capped_verses)
 
