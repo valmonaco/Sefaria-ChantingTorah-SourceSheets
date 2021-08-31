@@ -89,10 +89,9 @@ def generate_sheet(Book, Chapter, StartVerse, EndVerse, aliyah_ending):
                     ref_object={}
                     #ref_object["ref"] = verse_JSON['ref']
                     #ref_object["heRef"]= verse_JSON['heRef']
-                    ref_object["ref"] = ""
+                    ref_object["ref"] = Sefaria_Torah_verseJSON['ref']
                     ref_object["heRef"]= ""
                     ref_object["text"] = {"en":Sefaria_Torah_verseJSON['text'], "he":Sefaria_Torah_verseJSON['he']}
-                    ref_object["options"]= {"PrependRefWithEn": Book_Chapter + str(StartVerse+i)}
 
                     sheet_json["sources"].append(ref_object)
 
