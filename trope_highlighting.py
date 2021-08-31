@@ -126,7 +126,7 @@ def loop_through_trope_patterns(all_tropes_str, highlight_dict, trope_word_place
     for i in range (0, len(verse_array)):
 
         if (i in end_span) and (not(i in start_span)):
-            formatted_verse = formatted_verse + "</span>" + verse_array[i] +  " "
+            formatted_verse = formatted_verse.rstrip() + "</span>&nbsp;" + verse_array[i] +  " "
 
         elif ((i in start_span) and not(i in end_span)):
             formatted_verse = (formatted_verse + "<span style=\"background-color:" + colors[start_span[i]]['hex_color'] + "; color:"+ colors[start_span[i]]['font_color'] + ";\">" + verse_array[i] + " ")
@@ -134,7 +134,7 @@ def loop_through_trope_patterns(all_tropes_str, highlight_dict, trope_word_place
             ordered_tune_list.append(tune_list[i])
 
         elif ((i in start_span) and (i in end_span)):
-            formatted_verse = formatted_verse + "</span><span style=\"background-color:" + colors[start_span[i]]['hex_color'] + "; color:"+ colors[start_span[i]]['font_color'] + ";\">" + verse_array[i] + " "
+            formatted_verse = formatted_verse.rstrip() + "</span>&nbsp;<span style=\"background-color:" + colors[start_span[i]]['hex_color'] + "; color:"+ colors[start_span[i]]['font_color'] + ";\">" + verse_array[i] + " "
             print("i in both start_span and end span:" + str(tune_list[i]))
             ordered_tune_list.append(tune_list[i])
 
