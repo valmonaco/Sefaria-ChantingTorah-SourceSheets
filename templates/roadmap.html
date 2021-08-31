@@ -1,4 +1,39 @@
 {% extends "layout.html" %}
 {% block content %}
-    <h1>Planned Features Roadmap</h1>
+    <h3>Planned Features Roadmap</h3>
+    <p>
+     The Torah Chanting Source Sheet Generator is a work in progress.
+     The current version shows its complete functionality (verse selection,
+     trope highlighting, trope tunes, and verse chanting).  In the future,
+     four key enhancements are planned:
+     <ol>
+<li><b>Customized selection of all source sheet elements:</b> The user should be
+able to indicate with granularity which element to include on the sheet.
+For example, maybe the student wants to focus on learning a particular trope.
+The interface would allow selection of that trope and just present the
+highlighting for that trope and the tune for that trope.
+</li>
+
+<li><b>Customized selection of trope tunes and verse chanting:</b>
+The current version includes only one trope cantillation system and
+one set of Torah verse recordings. The user should be able to select
+a different trope cantillation system and/or choose different recordings
+of the Torah verses.
+</li>
+
+<li><b>Account login:</b> Currently, the user needs to create a new sheet each
+time he/she wants to add or remove an element.  With a user registration
+option, the source sheet ID number could be saved in a database.  After login,
+the user could retrieve the saved sheet and modify the elements in place on
+the saved sheet.
+</li>
+
+<li><b>Additional marginalia:</b>  During the development the Torah Chanting
+Source Sheet Generator, I came across interesting information about
+tropes and chanting (e.g., rare tropes, special chanting tunes for
+certain verses).  I would like include some additional marginalia
+that will appear where appropriate.
+</li>
+    </ol>
+    </p>
 {% endblock content %}
