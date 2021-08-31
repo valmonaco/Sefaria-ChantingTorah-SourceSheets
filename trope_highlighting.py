@@ -74,6 +74,11 @@ def loop_through_trope_patterns(all_tropes_str, highlight_dict, trope_word_place
 
     tune_list={}
     ordered_tune_list=[]
+    trope_tune_labels={}
+    ordered_trope_tune_labels=[]
+
+    colors = highlighting_dictionaries.define_colors()
+
 
     for trope_name in highlight_dict.keys():
         print(trope_name)
@@ -102,6 +107,9 @@ def loop_through_trope_patterns(all_tropes_str, highlight_dict, trope_word_place
             #start_span[adjusted_start]=colors[highlight_dict[trope_name]['num']]['hex_color']
             start_span[adjusted_start]=highlight_dict[trope_name]['num']
             tune_list[adjusted_start] = highlight_dict[trope_name]['tunes'][temp_tune_index]
+            trope_tune_labels[adjusted_start] = {'bgcolor':colors[highlight_dict[trope_name]['num']]['hex_color'],'fgcolor':colors[highlight_dict[trope_name]['num']]['font_color'], 'trope':trope_name}
+
+
             end_span.append(adjusted_end)
             #tune_list.append(highlight_dict[trope_name]['tunes'][temp_tune_index])
             print("intermediate tune list:" + str(tune_list))
@@ -119,7 +127,6 @@ def loop_through_trope_patterns(all_tropes_str, highlight_dict, trope_word_place
     #formatted_verse = "וַ"
     i = 0
 
-    colors = highlighting_dictionaries.define_colors()
 
     verse_array= verse.split()
 
@@ -132,11 +139,13 @@ def loop_through_trope_patterns(all_tropes_str, highlight_dict, trope_word_place
             formatted_verse = (formatted_verse + "<span style=\"background-color:" + colors[start_span[i]]['hex_color'] + "; color:"+ colors[start_span[i]]['font_color'] + ";\">" + verse_array[i] + " ")
             print("i in start_span:" + str(tune_list[i]))
             ordered_tune_list.append(tune_list[i])
+            ordered_trope_tune_labels.append(trope_tune_labels[i])
 
         elif ((i in start_span) and (i in end_span)):
             formatted_verse = formatted_verse.rstrip() + "</span>&nbsp;<span style=\"background-color:" + colors[start_span[i]]['hex_color'] + "; color:"+ colors[start_span[i]]['font_color'] + ";\">" + verse_array[i] + " "
             print("i in both start_span and end span:" + str(tune_list[i]))
             ordered_tune_list.append(tune_list[i])
+            ordered_trope_tune_labels.append(trope_tune_labels[i])
 
         else:
             formatted_verse = formatted_verse + verse_array[i] + " "
@@ -149,4 +158,4 @@ def loop_through_trope_patterns(all_tropes_str, highlight_dict, trope_word_place
         ordered_tune_list.append("447567.mp3")
 
     print("ordered_tune_list: " + str(ordered_tune_list))
-    return formatted_verse, ordered_tune_list
+    return formatted_verse, ordered_tune_list, ordered_trope_tune_labels

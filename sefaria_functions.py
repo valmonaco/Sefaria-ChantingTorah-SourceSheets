@@ -31,7 +31,7 @@ def publish_sheet(values, capped_verses)->str:
         responseJSON = response.json()
         #print(response.text)
         session.pop('_flashes', None)
-        flash("Shhh!  We are in stealth mode pending Sefaria review and approval. This link won't be around forever and can't be searched for.")
+        flash("Shhh!  We are in semi-stealth mode pending Sefaria review and approval. This link won't be around forever and can't be searched for.")
 
         new_sheet_url = "https://val.cauldron.sefaria.org/sheets/" + str(responseJSON["id"]) + "?lang=bi"
         response = requests.get(new_sheet_url)
@@ -104,9 +104,11 @@ def generate_sheet(Book, Chapter, StartVerse, EndVerse, aliyah_ending):
 
 
                     if len(just_trope_str) > 0:
-                        highlighted_verse,tune_list=loop_through_trope_patterns(just_trope_str,highlight_count_dict,cumulative_tropes,Sefaria_Torah_verseJSON['he'],aliyah_ending)
+                        highlighted_verse,tune_list,trope_tune_labels=loop_through_trope_patterns(just_trope_str,highlight_count_dict,cumulative_tropes,Sefaria_Torah_verseJSON['he'],aliyah_ending)
 
                     print("inside generate_sheet, returned tune_list: " + str(tune_list))
+                    print("")
+                    print("inside generate_sheet, returned trope_tune_labels: " + str(trope_tune_labels))
 
                     comment_object={}
                     comment_object["comment"]= "<p><small>If a trope pattern is not recognized, it will appear without highlighting and without a trope tune audio file. Refer to the full verse chanting audio file for guidance on how to chant unhighlighted text.<br/></small></p>"
@@ -125,12 +127,32 @@ def generate_sheet(Book, Chapter, StartVerse, EndVerse, aliyah_ending):
                         print(tune)
                         media_object={}
                         if tune != "none":
+
+                            comment_object={}
+                            #trope_tune_labels[adjusted_start] = '<span style="background-color:' + colors[highlight_dict[trope_name]['num']]['hex_color'] + '; color:'+ colors[highlight_dict[trope_name]['num']]['font_color'] + ';">&nbsp;' + highlight_dict[trope_name] +'&nbsp;</span>'
+                            tune_label_html='<p><small> Trope '+ str(tune_list.index(tune)+1) +' <span style="background-color:' + trope_tune_labels[tune_list.index(tune)]['bgcolor'] + '; color:'+ trope_tune_labels[tune_list.index(tune)]['fgcolor']+ ';">&nbsp;' + trope_tune_labels[tune_list.index(tune)]['trope'] + '&nbsp;</small></span>'
+                            #comment_object["comment"]= "<p><small> Trope "+ str(tune_list.index(tune)) +"</small></p>"
+                            comment_object["comment"]= tune_label_html
+                            sheet_json["sources"].append(comment_object)
+
+
                             media_object["media"] = app.config['TROPE_TUNES_URL'] + tune
                             sheet_json["sources"].append(media_object)
                         else:
+
                             comment_object={}
-                            comment_object["comment"]= "<p><small><i>Trope tune currently unavailable.</i></small></p>"
+                            #trope_tune_labels[adjusted_start] = '<span style="background-color:' + colors[highlight_dict[trope_name]['num']]['hex_color'] + '; color:'+ colors[highlight_dict[trope_name]['num']]['font_color'] + ';">&nbsp;' + highlight_dict[trope_name] +'&nbsp;</span>'
+                            tune_label_html='<p><small> Trope ' + str(tune_list.index(tune)+1) +' <span style="background-color:'+ trope_tune_labels[tune_list.index(tune)]['bgcolor']+ '; color:'+ trope_tune_labels[tune_list.index(tune)]['fgcolor']+ ';">&nbsp;' + trope_tune_labels[tune_list.index(tune)]['trope'] + '</span><br/><i>Trope tune currently unavailable (may be a shorten version of standard trope)</i>.</small></span>'
+                            #tune_label_html='<p><small> Trope '+ str(tune_list.index(tune)) +' </small><span style="background-color:' + trope_tune_labels[tune_list.index(tune)]['color']+ ';">&nbsp;' + trope_tune_labels[tune_list.index(tune)]['trope'] + '&nbsp;</span>'
+                            #comment_object["comment"]= "<p><small> Trope "+ str(tune_list.index(tune)) +"</small></p>"
+                            comment_object["comment"]= tune_label_html
                             sheet_json["sources"].append(comment_object)
+
+
+
+                            #comment_object={}
+                            #comment_object["comment"]= "<p><small><i>Trope tune currently unavailable.</i></small></p>"
+                            #sheet_json["sources"].append(comment_object)
 
                     comment_object={}
                     comment_object["comment"]= "<p><small>Full Verse Chanted</small></p>"

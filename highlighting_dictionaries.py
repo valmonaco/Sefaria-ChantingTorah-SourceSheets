@@ -3,7 +3,7 @@ import trope_constants
 def create_highlight_dict():
     highlight_dict={
 
-    'DoubleMercha':{'num': "11",'family' : trope_constants.DOUBLE_MERCHA_TROPE, 'tunes': trope_constants.DOUBLE_MERCHA_TROPE_TUNE, 'loop' : 0, 'anchor' : u'\u05A6'}
+    'Mercha Ch-Fula':{'num': "11",'family' : trope_constants.DOUBLE_MERCHA_TROPE, 'tunes': trope_constants.DOUBLE_MERCHA_TROPE_TUNE, 'loop' : 0, 'anchor' : u'\u05A6'}
     	,
     'Karnei_Para':{'num': "13",'family' : trope_constants.K_PARA_BYOMO_TROPE, 'tunes': trope_constants.K_PARA_BYOMO_TROPE_TUNE,'loop' : 0, 'anchor' : u'\u059F'}
         ,
