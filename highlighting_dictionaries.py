@@ -27,7 +27,7 @@ def create_highlight_dict():
     	,
     #'Darga' :{'num': "6",'family' : trope_constants.DARGA_TROPE, 'tunes': trope_constants.DARGA_TROPE_TUNE,'loop' : 0, 'anchor' : u'\u05A7'}
     #	,
-    'Pazer':{'num': "1",'family' : trope_constants.PAZER_TROPE, 'tunes': trope_constants.PAZER_TROPE_TUNE,'loop' : 0, 'anchor' : u'\u05A1'}
+    'Pazer':{'num': "1a",'family' : trope_constants.PAZER_TROPE, 'tunes': trope_constants.PAZER_TROPE_TUNE,'loop' : 0, 'anchor' : u'\u05A1'}
     	,
     'Zakef_Gadol' :{'num': "5",'family' : trope_constants.ZAKEF_GADOL_TROPE, 'tunes': trope_constants.ZAKEF_GADOL_TROPE_TUNE,'loop' : 0, 'anchor' : u'\u0595'}
     	,
@@ -45,6 +45,7 @@ def define_colors():
     #https://waterdata.usgs.gov/blog/tolcolors/
     colors = {
 		"1": {"hex_color":"#549eb3" ,"font_color": "black"}, #mid blue, etnachta, #15 in in smooth rainbow scheme
+		"1a":{"hex_color":"#549eb3" ,"font_color": "white"}, #mid blue, pazer, #15 in in smooth rainbow scheme
 		"2": {"hex_color":"#e49c39", "font_color": "black"}, #orange, siluk, #25 in smooth rainbow scheme
 		"3": {"hex_color":"#ddd8ef", "font_color": "black"}, #pale blue, katon and ytiv, #2 in smooth rainbow scheme
 		"4": {"hex_color":"#a6be54", "font_color": "black"}, #pea green, rvii, #21 in in smooth rainbow scheme

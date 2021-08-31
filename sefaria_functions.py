@@ -83,7 +83,7 @@ def generate_sheet(Book, Chapter, StartVerse, EndVerse, aliyah_ending):
                         sheet_json["sources"]=[]
 
                         comment_object={}
-                        comment_object["comment"]= "<p><small>Please consult a rabbi, tutor, or a <i>gabbai</i> when using this study sheet. The creator of the sheet (not Sefaria) has sole responsibility for any errors. Please help make this program the best it can be by sending a detailed message describing any errors to: blahblah@gmail.com</small></p>"
+                        comment_object["comment"]= "<p><small>Please consult a rabbi, tutor, or a <i>gabbai</i> when using this study sheet. The creator of the sheet (TorahChantingHelper.net) has sole responsibility for any errors. Please help make this program the best it can be by sending a detailed message describing any errors to: blahblah@gmail.com</small></p>"
                         sheet_json["sources"].append(comment_object)
 
                     ref_object={}
@@ -107,11 +107,17 @@ def generate_sheet(Book, Chapter, StartVerse, EndVerse, aliyah_ending):
                         highlighted_verse,tune_list=loop_through_trope_patterns(just_trope_str,highlight_count_dict,cumulative_tropes,Sefaria_Torah_verseJSON['he'],aliyah_ending)
 
                     print("inside generate_sheet, returned tune_list: " + str(tune_list))
+
+                    comment_object={}
+                    comment_object["comment"]= "<p><small>If a trope pattern is not recognized, it will appear without highlighting and without a trope tune audio file. Refer to the full verse chanting audio file for guidance on how to chant unhighlighted text.<br/></small></p>"
+                    sheet_json["sources"].append(comment_object)
+
+
                     highlighted_text_object["outsideText"]= highlighted_verse
                     sheet_json["sources"].append(highlighted_text_object)
 
                     comment_object={}
-                    comment_object["comment"]= "<p><small>Trope Tunes (1st audio file corresponds to 1st highlighted trope).<br/> Trope Tunes awaiting permission of Northern Virginia Hebrew Congregation and Cantor Caro.</small></p>"
+                    comment_object["comment"]= "<p><small>Trope Tunes (1st audio file corresponds to 1st highlighted trope).<br/></small></p>"
                     sheet_json["sources"].append(comment_object)
 
 
@@ -119,11 +125,11 @@ def generate_sheet(Book, Chapter, StartVerse, EndVerse, aliyah_ending):
                         print(tune)
                         media_object={}
                         if tune != "none":
-                            media_object["media"] = "http://www.nvhcreston.org/wp-content/uploads/" + tune
+                            media_object["media"] = app.config['TROPE_TUNES_URL'] + tune
                             sheet_json["sources"].append(media_object)
                         else:
                             comment_object={}
-                            comment_object["comment"]= "<p><small>Missing trope tune in verse.</small></p>"
+                            comment_object["comment"]= "<p><small><i>Trope tune currently unavailable.</i></small></p>"
                             sheet_json["sources"].append(comment_object)
 
                     comment_object={}
@@ -181,6 +187,11 @@ def generate_sheet(Book, Chapter, StartVerse, EndVerse, aliyah_ending):
                 comment_object={}
                 comment_object["comment"]= "<p><small><b>Note:</b> Verse is at end of <i>aliyah</i>. Use alternative siluk/sof pasuk tune and modify tune to match trope.</small></p>"
                 sheet_json["sources"].append(comment_object)
+
+            comment_object={}
+            comment_object["comment"]= "<p><small><i>All audio recordings by Cantor Wendy Shermet (Temple Israel, Omaha, NE). Please consider a <a href=\"https://www.templeisraelomaha.com/payment.php\">donation</a> to the Cantor Shermet Music Fund.</i></small></p>"
+            sheet_json["sources"].append(comment_object)
+
 
             title = title + "-" + str((StartVerse+i))
             sheet_json["title"] = title
