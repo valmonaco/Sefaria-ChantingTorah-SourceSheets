@@ -26,7 +26,9 @@ def home():
                 StartVerse = form.startingVerse.data
                 EndVerse = form.endingVerse.data
 
-                generate_sheet(Book, Chapter, StartVerse, EndVerse)
+                aliyah_ending = form.aliyah.data
+
+                generate_sheet(Book, Chapter, StartVerse, EndVerse, aliyah_ending)
 
                 #flash('Sefaria Feedback: ' + query_Sefaria_Reference(verse) ,'success')
                 #return redirect(url_for('create'))

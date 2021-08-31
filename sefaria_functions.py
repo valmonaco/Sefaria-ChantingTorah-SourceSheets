@@ -31,7 +31,7 @@ def publish_sheet(values, capped_verses)->str:
         responseJSON = response.json()
         #print(response.text)
         session.pop('_flashes', None)
-        flash("Shhh!  We are in stealth mode pending Sefaria approval. This link won't be around forever and can't be searched for.")
+        flash("Shhh!  We are in stealth mode pending Sefaria review and approval. This link won't be around forever and can't be searched for.")
 
         new_sheet_url = "https://val.cauldron.sefaria.org/sheets/" + str(responseJSON["id"]) + "?lang=bi"
         response = requests.get(new_sheet_url)
@@ -50,7 +50,7 @@ def publish_sheet(values, capped_verses)->str:
         flash(error_message)
 
 
-def generate_sheet(Book, Chapter, StartVerse, EndVerse):
+def generate_sheet(Book, Chapter, StartVerse, EndVerse, aliyah_ending):
     error_detected=False
     capped_verses=""
 
@@ -105,7 +105,7 @@ def generate_sheet(Book, Chapter, StartVerse, EndVerse):
 
 
                     if len(just_trope_str) > 0:
-                        highlighted_verse,tune_list=loop_through_trope_patterns(just_trope_str,highlight_count_dict,cumulative_tropes,Sefaria_Torah_verseJSON['he'])
+                        highlighted_verse,tune_list=loop_through_trope_patterns(just_trope_str,highlight_count_dict,cumulative_tropes,Sefaria_Torah_verseJSON['he'],aliyah_ending)
 
                     print("inside generate_sheet, returned tune_list: " + str(tune_list))
                     highlighted_text_object["outsideText"]= highlighted_verse
@@ -177,6 +177,12 @@ def generate_sheet(Book, Chapter, StartVerse, EndVerse):
                         #flash(Sefaria_Torah_verseJSON["error"])
 
         if error_detected==False:
+
+            if (aliyah_ending):
+                comment_object={}
+                comment_object["comment"]= "<p><small><b>Note:</b> Verse is at end of <i>aliyah</i>. Use alternative siluk/sof pasuk tune and modify tune to match trope.</small></p>"
+                sheet_json["sources"].append(comment_object)
+
             title = title + "-" + str((StartVerse+i))
             sheet_json["title"] = title
             sheet_content = json.dumps(sheet_json)

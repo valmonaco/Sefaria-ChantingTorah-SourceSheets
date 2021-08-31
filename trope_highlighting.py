@@ -61,7 +61,7 @@ def set_loop_counts(just_trope_str):
     return highlight_dict
 
 
-def loop_through_trope_patterns(all_tropes_str, highlight_dict, trope_word_placement, verse):
+def loop_through_trope_patterns(all_tropes_str, highlight_dict, trope_word_placement, verse, aliyah):
     #print(verse)
     start_span={}
     end_span=[]
@@ -144,6 +144,9 @@ def loop_through_trope_patterns(all_tropes_str, highlight_dict, trope_word_place
 
 
     formatted_verse =  formatted_verse + "</span>"
+    if aliyah==True:
+        ordered_tune_list.pop()
+        ordered_tune_list.append("2019/08/Trope-5-1.mp3")
 
     print("ordered_tune_list: " + str(ordered_tune_list))
     return formatted_verse, ordered_tune_list

@@ -31,5 +31,6 @@ class CreateForm(FlaskForm):
     chapter = IntegerField('Select Chapter', validators=[DataRequired()])
     startingVerse = IntegerField('Select Starting Verse', validators=[DataRequired()])
     endingVerse = IntegerField('Select Ending Verse', validators=[DataRequired()])
+    aliyah = BooleanField('Last verse listed is end of an <i>aliyah</i>.', validators=[])
 
     submit = SubmitField('Create')
