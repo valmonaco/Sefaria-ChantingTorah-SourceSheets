@@ -31,7 +31,7 @@ def publish_sheet(values, capped_verses)->str:
         responseJSON = response.json()
         #print(response.text)
         session.pop('_flashes', None)
-        flash("Shhh!  We are in semi-stealth mode pending Sefaria review and approval. This link won't be around forever and can't be searched for.")
+        flash("Thanks for checking out the Torah Chanting Source Sheet Generator. Currently, the generator does not create source sheets on the main Sefaria site. The link provided below is for a temporary copy of the Sefaria site. The link will stop working at some point in the future and can't be searched for. Please bookmark it for the time being and check back later for updates.")
 
         new_sheet_url = "https://val.cauldron.sefaria.org/sheets/" + str(responseJSON["id"]) + "?lang=bi"
         response = requests.get(new_sheet_url)
@@ -63,7 +63,7 @@ def generate_sheet(Book, Chapter, StartVerse, EndVerse, aliyah_ending):
     else:
 
         if EndVerse - StartVerse >= 4:
-            capped_verses = "ps. You requested " + str(EndVerse-StartVerse) + " verses, but we provided only the first 4 requested verses in this sheet."
+            capped_verses = "ps. You requested " + str(EndVerse-StartVerse+1) + " verses, but we provided only the first 4 requested verses in this sheet."
             EndVerse = StartVerse + 3
 
         for i in range(0,(EndVerse-StartVerse)+1):
@@ -83,7 +83,7 @@ def generate_sheet(Book, Chapter, StartVerse, EndVerse, aliyah_ending):
                         sheet_json["sources"]=[]
 
                         comment_object={}
-                        comment_object["comment"]= "<p><small>Please consult a rabbi, tutor, or a <i>gabbai</i> when using this study sheet. The creator of the sheet (TorahChantingHelper.net) has sole responsibility for any errors. Please help make this program the best it can be by sending a detailed message describing any errors to: blahblah@gmail.com</small></p>"
+                        comment_object["comment"]= "<p><small>Please consult a rabbi, tutor, or a <i>gabbai</i> when using this study sheet. The generator of the sheet (TorahChantingHelper.net) has sole responsibility for any errors. Please help make this program the best it can be by sending a detailed message describing any errors to: val@torahchantinghelper.net</small></p>"
                         sheet_json["sources"].append(comment_object)
 
                     ref_object={}
