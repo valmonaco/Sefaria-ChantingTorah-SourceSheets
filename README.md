@@ -1,1 +1,14 @@
-# Sefaria-ChantingTorah-SourceSheets
+## Sefaria Chanting Torah Source Sheet Generator
+
+This application takes the input of a range of Torah verses and
+provides a generated Sefaria source sheet with scaffolding for
+learning how to chant.  The scaffolding includes trope identification
+and highlighting, trope cantillation tunes, and full verse chanting audio files.
+
+Audio files were recorded by Cantor Wendy Shermet (Temple Israel, Omaha, NE) and
+are publically available at:
+[https://www.templeisraelomaha.com/cantors-classroom](https://www.templeisraelomaha.com/cantors-classroom).
+
+The site is a Flask application.  Thanks to Corey Schafer for his helpful
+[tutorial series](https://www.youtube.com/playlist?list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH)
+on developing Flask applications.
