@@ -27,7 +27,6 @@ class CreateForm(FlaskForm):
     ]
     Torah_Book_Field= SelectField(u'What book in the Torah are you selecting?', choices=TORAH_BOOKS, validators = [Required()])
 
-
     chapter = IntegerField('Select Chapter', validators=[DataRequired()])
     startingVerse = IntegerField('Select Starting Verse', validators=[DataRequired()])
     endingVerse = IntegerField('Select Ending Verse', validators=[DataRequired()])

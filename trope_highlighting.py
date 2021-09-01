@@ -12,11 +12,9 @@ def extract_trope_characters(verse):
     verse_array = verse.split()
 
     for word in verse_array:
-        #print(word)
         for character in word:
             if (u'\u0591' <= character <= u'\u05AF'):
                 trope_characters = trope_characters + character
-                #print(str(hex(ord(character))))
                 cumulative_tropes.append(w)
         w=w+1
 
@@ -25,7 +23,6 @@ def extract_trope_characters(verse):
     cumulative_tropes.append(w-1)
     cumulative_tropes.append(w)
 
-    #print(cumulative_tropes)
     just_trope_str = trope_characters
 
     return just_trope_str
@@ -62,7 +59,7 @@ def set_loop_counts(just_trope_str):
 
 
 def loop_through_trope_patterns(all_tropes_str, highlight_dict, trope_word_placement, verse, aliyah):
-    #print(verse)
+
     start_span={}
     end_span=[]
 
@@ -81,14 +78,10 @@ def loop_through_trope_patterns(all_tropes_str, highlight_dict, trope_word_place
 
 
     for trope_name in highlight_dict.keys():
-        print(trope_name)
         for j in range(0,highlight_dict[trope_name]['loop']):
             temp_tune_index=0
-            print("j=" + str(j))
-            print(highlight_dict[trope_name])
             for trope in highlight_dict[trope_name]['family']:
 
-                #print(trope)
                 pattern = re.compile(trope)
                 res = pattern.search(all_tropes_str)
 
@@ -101,32 +94,19 @@ def loop_through_trope_patterns(all_tropes_str, highlight_dict, trope_word_place
                     res_span_mask[0]=res.start()
                     res_span_mask[1]=res.end()
                     temp_tune_index= highlight_dict[trope_name]['family'].index(trope)
-                    print("trope: " + trope +  "  temp_tune_index: "  + str(temp_tune_index))
 
-            #start_span[adjusted_start]=highlight_dict[trope_name]['color']
-            #start_span[adjusted_start]=colors[highlight_dict[trope_name]['num']]['hex_color']
             start_span[adjusted_start]=highlight_dict[trope_name]['num']
             tune_list[adjusted_start] = highlight_dict[trope_name]['tunes'][temp_tune_index]
             trope_tune_labels[adjusted_start] = {'bgcolor':colors[highlight_dict[trope_name]['num']]['hex_color'],'fgcolor':colors[highlight_dict[trope_name]['num']]['font_color'], 'trope':trope_name}
 
 
             end_span.append(adjusted_end)
-            #tune_list.append(highlight_dict[trope_name]['tunes'][temp_tune_index])
-            print("intermediate tune list:" + str(tune_list))
 
             for r in range(res_span_mask[0], res_span_mask[1]):
                 all_tropes_str = all_tropes_str[0:r] + "*" + all_tropes_str[r+1: ]
-            print(all_tropes_str)
-
-
-            #print("start_span: "  + str(start_span))
-            #print("end_span: "  + str(end_span))
-
 
     formatted_verse = "<br/>"
-    #formatted_verse = "וַ"
     i = 0
-
 
     verse_array= verse.split()
 
@@ -157,5 +137,4 @@ def loop_through_trope_patterns(all_tropes_str, highlight_dict, trope_word_place
         ordered_tune_list.pop()
         ordered_tune_list.append("447567.mp3")
 
-    print("ordered_tune_list: " + str(ordered_tune_list))
     return formatted_verse, ordered_tune_list, ordered_trope_tune_labels

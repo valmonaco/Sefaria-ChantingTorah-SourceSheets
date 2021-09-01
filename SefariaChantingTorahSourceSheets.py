@@ -30,10 +30,6 @@ def home():
 
                 generate_sheet(Book, Chapter, StartVerse, EndVerse, aliyah_ending)
 
-                #flash('Sefaria Feedback: ' + query_Sefaria_Reference(verse) ,'success')
-                #return redirect(url_for('create'))
-
-                #flash(customize(verse))
                 return redirect(url_for('submission_info'))
         else:
                 flash('If you are not a robot, go ahead and check the box.')

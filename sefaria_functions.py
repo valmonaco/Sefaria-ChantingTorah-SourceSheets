@@ -5,20 +5,16 @@ from trope_highlighting import extract_trope_characters, map_trope_placement, se
 from retrieve_verse_audio_file import retrieve_audio
 
 def retrieve_Verse(verse) -> str:
-    #verse_span = Book_Chapter + str(StartVerse) + "-" + str(EndVerse)
 
     url = app.config['GET_URL'] + verse + '?context=0'
     Sefaria_Torah_verse = requests.get(url)
 
     Sefaria_Torah_verseJSON = Sefaria_Torah_verse.json()
-    #print(Sefaria_Torah_verseJSON)
-    #print("")
 
     return Sefaria_Torah_verseJSON
 
 
 def valid_ref(retrieved_JSON):
-    #print(retrieved_JSON)
     if not("error") in retrieved_JSON:
         return True
     else:
@@ -29,7 +25,7 @@ def publish_sheet(values, capped_verses)->str:
     try:
         response = requests.post(app.config['POST_URL'], data=values)
         responseJSON = response.json()
-        #print(response.text)
+
         session.pop('_flashes', None)
         flash("Thanks for checking out the Torah Chanting Source Sheet Generator. Currently, the generator does not create source sheets on the main Sefaria site. The link provided below is for a temporary copy of the Sefaria site. The link will stop working at some point in the future and can't be searched for. Please bookmark it for the time being and check back later for updates.")
 
@@ -46,7 +42,6 @@ def publish_sheet(values, capped_verses)->str:
 
     except urllib2.error.HTTPError as e:
         error_message = e.read()
-        #print(error_message)
         flash(error_message)
 
 
@@ -87,8 +82,6 @@ def generate_sheet(Book, Chapter, StartVerse, EndVerse, aliyah_ending):
                         sheet_json["sources"].append(comment_object)
 
                     ref_object={}
-                    #ref_object["ref"] = verse_JSON['ref']
-                    #ref_object["heRef"]= verse_JSON['heRef']
                     ref_object["ref"] = Sefaria_Torah_verseJSON['ref']
                     ref_object["heRef"]= ""
                     ref_object["text"] = {"en":Sefaria_Torah_verseJSON['text'], "he":Sefaria_Torah_verseJSON['he']}
@@ -100,20 +93,14 @@ def generate_sheet(Book, Chapter, StartVerse, EndVerse, aliyah_ending):
                     just_trope_str = extract_trope_characters(Sefaria_Torah_verseJSON['he'])
                     cumulative_tropes = map_trope_placement(Sefaria_Torah_verseJSON['he'])
                     highlight_count_dict= set_loop_counts(just_trope_str)
-                    #print(highlight_count_dict)
 
 
                     if len(just_trope_str) > 0:
                         highlighted_verse,tune_list,trope_tune_labels=loop_through_trope_patterns(just_trope_str,highlight_count_dict,cumulative_tropes,Sefaria_Torah_verseJSON['he'],aliyah_ending)
 
-                    print("inside generate_sheet, returned tune_list: " + str(tune_list))
-                    print("")
-                    print("inside generate_sheet, returned trope_tune_labels: " + str(trope_tune_labels))
-
                     comment_object={}
                     comment_object["comment"]= "<p><small>If a trope pattern is not recognized, it will appear without highlighting and without a trope tune audio file. Refer to the full verse chanting audio file for guidance on how to chant unhighlighted text.<br/></small></p>"
                     sheet_json["sources"].append(comment_object)
-
 
                     highlighted_text_object["outsideText"]= highlighted_verse
                     sheet_json["sources"].append(highlighted_text_object)
@@ -129,30 +116,18 @@ def generate_sheet(Book, Chapter, StartVerse, EndVerse, aliyah_ending):
                         if tune != "none":
 
                             comment_object={}
-                            #trope_tune_labels[adjusted_start] = '<span style="background-color:' + colors[highlight_dict[trope_name]['num']]['hex_color'] + '; color:'+ colors[highlight_dict[trope_name]['num']]['font_color'] + ';">&nbsp;' + highlight_dict[trope_name] +'&nbsp;</span>'
                             tune_label_html='<p><small> Trope '+ str(tune_list.index(tune)+1) +' <span style="background-color:' + trope_tune_labels[tune_list.index(tune)]['bgcolor'] + '; color:'+ trope_tune_labels[tune_list.index(tune)]['fgcolor']+ ';">&nbsp;' + trope_tune_labels[tune_list.index(tune)]['trope'] + '&nbsp;</small></span>'
-                            #comment_object["comment"]= "<p><small> Trope "+ str(tune_list.index(tune)) +"</small></p>"
                             comment_object["comment"]= tune_label_html
                             sheet_json["sources"].append(comment_object)
-
 
                             media_object["media"] = app.config['TROPE_TUNES_URL'] + tune
                             sheet_json["sources"].append(media_object)
                         else:
 
                             comment_object={}
-                            #trope_tune_labels[adjusted_start] = '<span style="background-color:' + colors[highlight_dict[trope_name]['num']]['hex_color'] + '; color:'+ colors[highlight_dict[trope_name]['num']]['font_color'] + ';">&nbsp;' + highlight_dict[trope_name] +'&nbsp;</span>'
                             tune_label_html='<p><small> Trope ' + str(tune_list.index(tune)+1) +' <span style="background-color:'+ trope_tune_labels[tune_list.index(tune)]['bgcolor']+ '; color:'+ trope_tune_labels[tune_list.index(tune)]['fgcolor']+ ';">&nbsp;' + trope_tune_labels[tune_list.index(tune)]['trope'] + '</span><br/><i>Trope tune currently unavailable (may be a shorten version of standard trope)</i>.</small></span>'
-                            #tune_label_html='<p><small> Trope '+ str(tune_list.index(tune)) +' </small><span style="background-color:' + trope_tune_labels[tune_list.index(tune)]['color']+ ';">&nbsp;' + trope_tune_labels[tune_list.index(tune)]['trope'] + '&nbsp;</span>'
-                            #comment_object["comment"]= "<p><small> Trope "+ str(tune_list.index(tune)) +"</small></p>"
                             comment_object["comment"]= tune_label_html
                             sheet_json["sources"].append(comment_object)
-
-
-
-                            #comment_object={}
-                            #comment_object["comment"]= "<p><small><i>Trope tune currently unavailable.</i></small></p>"
-                            #sheet_json["sources"].append(comment_object)
 
                     comment_object={}
                     comment_object["comment"]= "<p><small>Full Verse Chanted</small></p>"
@@ -177,7 +152,6 @@ def generate_sheet(Book, Chapter, StartVerse, EndVerse, aliyah_ending):
                 else:  #verse found to be invalid
 
                     if i > 0:
-                        print("later verse found to be invalid")
                         #add comment to sheet about error
                         title = title + "-" + str((StartVerse+i)-1)
                         sheet_json["title"] = title
@@ -191,17 +165,12 @@ def generate_sheet(Book, Chapter, StartVerse, EndVerse, aliyah_ending):
 
                     else:
                         print("first verse found to be invalid")
-                        #flash("len(Sefaria_Torah_verseJSON['he'])" + str(len(Sefaria_Torah_verseJSON['he'])))
-                        #flash(verse_span + " does not appear in the Torah.")
 
                         link_text = "<a href=\"../home\">Try again.</a>"
                         link = Markup(link_text)
-                        #flash(link)
                         flash(verse_span + " does not appear in the Torah. " + link)
 
                         error_detected=True
-
-                        #flash(Sefaria_Torah_verseJSON["error"])
 
         if error_detected==False:
 

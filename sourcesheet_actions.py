@@ -8,8 +8,6 @@ def customize(ref):
 
     print("Ref is: " + ref)
 
-
-
     sheet_json = {}
     ref_object={}
     ref_object["ref"] = ref
