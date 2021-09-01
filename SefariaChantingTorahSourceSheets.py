@@ -67,3 +67,6 @@ def contact():
 def submission_info():
     return render_template('submission_info.html', title='Submission Info')
 
+@app.route('/privacy_terms')
+def privacy_terms():
+    return render_template('privacy_terms.html', title='Roadmap')
