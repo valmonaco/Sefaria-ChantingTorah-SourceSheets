@@ -1,4 +1,4 @@
-from urllib.request import Request, urlopen
+import requests
 from bs4 import BeautifulSoup as soup
 from private_audio import id_audio_verse_url
 
@@ -7,9 +7,9 @@ def retrieve_audio(book, chapter,start_verse,end_verse):
 
     url = id_audio_verse_url(book, chapter,start_verse,end_verse)
 
-    req = Request(url , headers={'User-Agent': 'Mozilla/5.0'})
+    page = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'})
+    webpage=page.text
 
-    webpage = urlopen(req).read()
     page_soup = soup(webpage, "html.parser")
 
     audio_files=[]
