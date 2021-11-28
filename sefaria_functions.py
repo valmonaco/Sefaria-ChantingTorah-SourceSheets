@@ -1,13 +1,12 @@
 import requests, json
 from flask import current_app as app, flash, session, Markup
-import urllib as urllib2
 from trope_highlighting import extract_trope_characters, map_trope_placement, set_loop_counts, loop_through_trope_patterns
 from retrieve_verse_audio_file import retrieve_audio
 
 def retrieve_Verse(verse) -> str:
 
     url = app.config['GET_URL'] + verse + '?context=0'
-    Sefaria_Torah_verse = requests.get(url)
+    Sefaria_Torah_verse = requests.get(url,verify="mysite/instance/cauldron-sefaria-org-chain-64.pem")
 
     Sefaria_Torah_verseJSON = Sefaria_Torah_verse.json()
 
@@ -23,16 +22,16 @@ def valid_ref(retrieved_JSON):
 
 def publish_sheet(values, capped_verses)->str:
     try:
-        response = requests.post(app.config['POST_URL'], data=values)
+        response = requests.post(app.config['POST_URL'], data=values,verify="mysite/instance/cauldron-sefaria-org-chain-64.pem")
         responseJSON = response.json()
 
         session.pop('_flashes', None)
         flash("Thanks for checking out the Torah Chanting Source Sheet Generator. Currently, the generator does not create source sheets on the main Sefaria site. The link provided below is for a temporary copy of the Sefaria site. The link will stop working at some point in the future and can't be searched for. Please bookmark it for the time being and check back later for updates.")
 
         new_sheet_url = "https://val.cauldron.sefaria.org/sheets/" + str(responseJSON["id"]) + "?lang=bi"
-        response = requests.get(new_sheet_url)
+        response = requests.get(new_sheet_url, headers={'User-Agent': 'Mozilla/5.0'},verify="mysite/instance/cauldron-sefaria-org-chain-64.pem")
         while response.status_code != 200:
-            response = requests.get(new_sheet_url)
+            response = requests.get(new_sheet_url, headers={'User-Agent': 'Mozilla/5.0'},verify="mysite/instance/cauldron-sefaria-org-chain-64.pem")
 
         link_text = "<a href=\"" + new_sheet_url + "\" target=\"_blank\">"+ new_sheet_url + "</a>"
         link = Markup(link_text)

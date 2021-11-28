@@ -2,7 +2,6 @@
 
 from flask import Flask, render_template, url_for, flash, redirect, request
 from forms import RegistrationForm, LoginForm, CreateForm
-from sourcesheet_actions import customize
 from sefaria_functions import generate_sheet
 
 from flask_recaptcha import ReCaptcha # Import ReCaptcha object
