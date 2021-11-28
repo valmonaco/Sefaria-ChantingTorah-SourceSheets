@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*
 
-from flask import Flask, render_template, url_for, flash, redirect, request
+from flask import Flask, render_template, url_for, flash, redirect, request, send_from_directory
 from forms import RegistrationForm, LoginForm, CreateForm
 from sefaria_functions import generate_sheet
 
@@ -10,6 +10,9 @@ app = Flask(__name__, instance_relative_config=True)
 app.config.from_pyfile('config.py')
 recaptcha = ReCaptcha(app) # Create a ReCaptcha object by passing in 'app' as parameter
 
+@app.route("/robots.txt")
+def robots():
+    return send_from_directory("static", "robots.txt")
 
 @app.route('/', methods=['GET','POST'])
 @app.route('/home',methods=['GET','POST'])
