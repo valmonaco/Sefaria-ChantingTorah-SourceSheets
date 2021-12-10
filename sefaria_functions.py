@@ -77,7 +77,7 @@ def generate_sheet(Book, Chapter, StartVerse, EndVerse, aliyah_ending):
                         sheet_json["sources"]=[]
 
                         comment_object={}
-                        comment_object["comment"]= "<p><small>Please consult a rabbi, tutor, or a <i>gabbai</i> when using this study sheet. The generator of the sheet (TorahChantingHelper.net) has sole responsibility for any errors. Please help make this program the best it can be by sending a detailed message describing any errors to: val@torahchantinghelper.net</small></p>"
+                        comment_object["comment"]= "<p><small>Please consult a rabbi, cantor, tutor, or <i>gabbai</i> when using this study sheet. The generator of the sheet (TorahChantingHelper.net) has sole responsibility for any errors. Please help make this program the best it can be by sending a detailed message describing any errors to: val@torahchantinghelper.net</small></p>"
                         sheet_json["sources"].append(comment_object)
 
                     ref_object={}
