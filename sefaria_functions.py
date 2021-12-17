@@ -1,6 +1,6 @@
 import requests, json
 from flask import current_app as app, flash, session, Markup
-from trope_highlighting import extract_trope_characters, map_trope_placement, set_loop_counts, loop_through_trope_patterns
+from trope_highlighting import extract_trope_characters, extract_trope_characters_nodups, map_trope_placement, set_loop_counts, loop_through_trope_patterns
 from retrieve_verse_audio_file import retrieve_audio
 
 def retrieve_Verse(verse) -> str:
@@ -54,6 +54,15 @@ def generate_sheet(Book, Chapter, StartVerse, EndVerse, aliyah_ending):
         #flash(link)
         flash("Whoops! Starting verse must be before ending verse. " + link)
 
+    elif (Book=="Exodus" and Chapter==20 and StartVerse >=2 and StartVerse <= 14):
+        flash("Trope highlighting for the Ten Commandments in Exodus is not yet available. Please check back later.")
+
+    elif (Book=="Deuteronomy" and Chapter==5 and StartVerse >=6 and StartVerse <= 18):
+        flash("Trope highlighting for the Ten Commandments in Deuteronomy is not yet available. Please check back later.")
+
+    elif (Book=="Exodus" and Chapter==15 and StartVerse >=1 and StartVerse <= 19):
+        flash("Trope highlighting and tunes for the \"Song of the Sea\" in Exodus are not yet available. Please check back later.")
+
     else:
 
         if EndVerse - StartVerse >= 4:
@@ -90,8 +99,9 @@ def generate_sheet(Book, Chapter, StartVerse, EndVerse, aliyah_ending):
 
                     highlighted_text_object={}
                     just_trope_str = extract_trope_characters(Sefaria_Torah_verseJSON['he'])
+                    just_trope_str_no_dups = extract_trope_characters_nodups(Sefaria_Torah_verseJSON['he'])
                     cumulative_tropes = map_trope_placement(Sefaria_Torah_verseJSON['he'])
-                    highlight_count_dict= set_loop_counts(just_trope_str)
+                    highlight_count_dict= set_loop_counts(just_trope_str_no_dups)
 
 
                     if len(just_trope_str) > 0:
@@ -109,13 +119,24 @@ def generate_sheet(Book, Chapter, StartVerse, EndVerse, aliyah_ending):
                     sheet_json["sources"].append(comment_object)
 
 
+                    j = 1
                     for tune in tune_list:
-                        print(tune)
+                        #print(tune)
+                        tune_label_html=""
                         media_object={}
                         if tune != "none":
 
                             comment_object={}
-                            tune_label_html='<p><small> Trope '+ str(tune_list.index(tune)+1) +' <span style="background-color:' + trope_tune_labels[tune_list.index(tune)]['bgcolor'] + '; color:'+ trope_tune_labels[tune_list.index(tune)]['fgcolor']+ ';">&nbsp;' + trope_tune_labels[tune_list.index(tune)]['trope'] + '&nbsp;</small></span>'
+
+                            if tune == "447591.mp3":
+                                tune_label_html='<p><small> Trope '+ str(tune_list.index(tune)+1) +' <span style="background-color:' + trope_tune_labels[tune_list.index(tune)]['bgcolor'] + '; color:'+ trope_tune_labels[tune_list.index(tune)]['fgcolor']+ ';">&nbsp;' + 'Darga T\'vir' + '&nbsp;</small></span>'
+                            elif tune == "447558.mp3":
+                                tune_label_html='<p><small> Trope '+ str(tune_list.index(tune)+1) +' <span style="background-color:' + trope_tune_labels[tune_list.index(tune)]['bgcolor'] + '; color:'+ trope_tune_labels[tune_list.index(tune)]['fgcolor']+ ';">&nbsp;' + 'Katon with Y\'tiv' + '&nbsp;</small></span>'
+                            elif tune == "447560.mp3":
+                                tune_label_html='<p><small> Trope '+ str(tune_list.index(tune)+1) +' <span style="background-color:' + trope_tune_labels[tune_list.index(tune)]['bgcolor'] + '; color:'+ trope_tune_labels[tune_list.index(tune)]['fgcolor']+ ';">&nbsp;' + 'Katon with Y\'tiv' + '&nbsp;</small></span>'
+                            else:
+                                tune_label_html='<p><small> Trope '+ str(tune_list.index(tune)+1) +' <span style="background-color:' + trope_tune_labels[tune_list.index(tune)]['bgcolor'] + '; color:'+ trope_tune_labels[tune_list.index(tune)]['fgcolor']+ ';">&nbsp;' + trope_tune_labels[tune_list.index(tune)]['trope'] + '&nbsp;</small></span>'
+
                             comment_object["comment"]= tune_label_html
                             sheet_json["sources"].append(comment_object)
 
@@ -124,9 +145,10 @@ def generate_sheet(Book, Chapter, StartVerse, EndVerse, aliyah_ending):
                         else:
 
                             comment_object={}
-                            tune_label_html='<p><small> Trope ' + str(tune_list.index(tune)+1) +' <span style="background-color:'+ trope_tune_labels[tune_list.index(tune)]['bgcolor']+ '; color:'+ trope_tune_labels[tune_list.index(tune)]['fgcolor']+ ';">&nbsp;' + trope_tune_labels[tune_list.index(tune)]['trope'] + '</span><br/><i>Trope tune currently unavailable (may be a shorten version of standard trope)</i>.</small></span>'
+                            tune_label_html='<p><small> Trope ' + str(j) +' <span style="background-color:'+ trope_tune_labels[j-1]['bgcolor']+ '; color:'+ trope_tune_labels[j-1]['fgcolor']+ ';">&nbsp;' + trope_tune_labels[j-1]['trope'] + '</span><br/><i>Trope tune currently unavailable (may be a shorten version of standard trope)</i>.</small></span>'
                             comment_object["comment"]= tune_label_html
                             sheet_json["sources"].append(comment_object)
+                        j=j+1
 
                     comment_object={}
                     comment_object["comment"]= "<p><small>Full Verse Chanted</small></p>"

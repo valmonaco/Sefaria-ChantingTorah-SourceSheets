@@ -1,6 +1,40 @@
 import highlighting_dictionaries
 import re
 
+def extract_trope_characters_nodups(verse):
+    trope_characters_nodups = ""
+    #cumulative_tropes=[]
+    #just_trope_str = ""
+
+    #w = 0
+
+    verse_array = verse.split()
+
+    for word in verse_array:
+        previous_trope = ""
+        for character in word:
+            if (u'\u0591' <= character <= u'\u05AF'):
+                if character != previous_trope:
+                    trope_characters_nodups  = trope_characters_nodups  + character
+                    previous_trope = character
+                elif character == u'\u0592': #postpositive segol
+                    trope_characters_nodups  = trope_characters_nodups  + 's'
+                    print("found a postpositive segol")
+                elif character == u'\u05A9':  #postpositive tvir
+                    trope_characters_nodups  = trope_characters_nodups  + 't'
+                elif character == u'\u05A0':  #postpositive T'lisha g'dolah
+                    trope_characters_nodups  = trope_characters_nodups  + 'g'
+                else:
+                    trope_characters_nodups  = trope_characters_nodups  + character
+
+        #w=w+1
+
+
+    trope_characters_nodups  = trope_characters_nodups + u'\u05BD'
+    #cumulative_tropes.append(w-1)
+    #cumulative_tropes.append(w)
+    #print("trope_characters_nodups: " + trope_characters_nodups)
+    return trope_characters_nodups
 
 def extract_trope_characters(verse):
     trope_characters = ""
@@ -47,13 +81,16 @@ def map_trope_placement(verse):
     return cumulative_tropes
 
 
-def set_loop_counts(just_trope_str):
+def set_loop_counts(trope_characters_nodups):
 
     highlight_dict = highlighting_dictionaries.create_highlight_dict()
 
     for trope_name in highlight_dict.keys():
+        #each trope has an anchor
         from_unicode_taamei = highlight_dict[trope_name]['anchor']
-        number = just_trope_str.count(from_unicode_taamei)
+        #count how many anchors
+        number = trope_characters_nodups.count(from_unicode_taamei)
+        #loop through trope marks this many times
         highlight_dict[trope_name]['loop'] = number
     return highlight_dict
 
