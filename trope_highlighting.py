@@ -97,6 +97,8 @@ def set_loop_counts(trope_characters_nodups):
 
 def loop_through_trope_patterns(all_tropes_str, highlight_dict, trope_word_placement, verse, aliyah):
 
+    match_found = False
+
     start_span={}
     end_span=[]
 
@@ -119,14 +121,17 @@ def loop_through_trope_patterns(all_tropes_str, highlight_dict, trope_word_place
         highlight_dict = set_loop_counts(all_tropes_str)
 
         for j in range(0,highlight_dict[trope_name]['loop']):
+
             temp_tune_index=0
+            match_found = False
+
             for trope in highlight_dict[trope_name]['family']:
 
                 pattern = re.compile(trope)
                 res = pattern.search(all_tropes_str)
 
                 if (res):
-
+                    match_found = True
                     adjusted_start = trope_word_placement[res.start()]
                     adjusted_end = trope_word_placement[res.end()]
                     if adjusted_start == adjusted_end:
@@ -135,15 +140,16 @@ def loop_through_trope_patterns(all_tropes_str, highlight_dict, trope_word_place
                     res_span_mask[1]=res.end()
                     temp_tune_index= highlight_dict[trope_name]['family'].index(trope)
 
-            start_span[adjusted_start]=highlight_dict[trope_name]['num']
-            tune_list[adjusted_start] = highlight_dict[trope_name]['tunes'][temp_tune_index]
-            trope_tune_labels[adjusted_start] = {'bgcolor':colors[highlight_dict[trope_name]['num']]['hex_color'],'fgcolor':colors[highlight_dict[trope_name]['num']]['font_color'], 'trope':trope_name}
+            if (match_found):
+                start_span[adjusted_start]=highlight_dict[trope_name]['num']
+                tune_list[adjusted_start] = highlight_dict[trope_name]['tunes'][temp_tune_index]
+                trope_tune_labels[adjusted_start] = {'bgcolor':colors[highlight_dict[trope_name]['num']]['hex_color'],'fgcolor':colors[highlight_dict[trope_name]['num']]['font_color'], 'trope':trope_name}
 
 
-            end_span.append(adjusted_end)
+                end_span.append(adjusted_end)
 
-            for r in range(res_span_mask[0], res_span_mask[1]):
-                all_tropes_str = all_tropes_str[0:r] + "*" + all_tropes_str[r+1: ]
+                for r in range(res_span_mask[0], res_span_mask[1]):
+                    all_tropes_str = all_tropes_str[0:r] + "*" + all_tropes_str[r+1: ]
 
     formatted_verse = "<br/>"
     i = 0
