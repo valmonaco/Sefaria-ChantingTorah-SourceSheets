@@ -115,6 +115,9 @@ def loop_through_trope_patterns(all_tropes_str, highlight_dict, trope_word_place
 
 
     for trope_name in highlight_dict.keys():
+
+        highlight_dict = set_loop_counts(all_tropes_str)
+
         for j in range(0,highlight_dict[trope_name]['loop']):
             temp_tune_index=0
             for trope in highlight_dict[trope_name]['family']:

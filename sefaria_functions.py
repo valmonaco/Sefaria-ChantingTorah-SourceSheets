@@ -124,8 +124,8 @@ def generate_sheet(Book, Chapter, StartVerse, EndVerse, aliyah_ending):
                         #print(tune)
                         tune_label_html=""
                         media_object={}
-                        if tune != "none":
 
+                        if not tune.startswith('none'):
                             comment_object={}
 
                             if tune == "447591.mp3":
