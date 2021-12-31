@@ -61,7 +61,8 @@ def define_colors():
 		"6": {"hex_color":"#d1b541", "font_color": "black"}, #mustard, darga and tvir, #21 in smooth rainbow scheme
 		"6a": {"hex_color":"#d1b541", "font_color": "#3d6e9e"}, #mustard, darga and tvir, #21 in smooth rainbow scheme
 		"7": {"hex_color":"#b58fc2", "font_color": "black"}, #deeper purple, K-Vazla, #5 in smooth rainbow scheme
-		"7a": {"hex_color":"#b58fc2", "font_color": "#FFFFFF"}, #deeper purple, Geresh, #5 in smooth rainbow scheme	"8": {"hex_color":"#69b190", "font_color": "black"}, #teal, segol, #18 in the smooth rainbow scheme
+		"7a": {"hex_color":"#b58fc2", "font_color": "#FFFFFF"}, #deeper purple, Geresh, #5 in smooth rainbow scheme
+		"8": {"hex_color":"#69b190", "font_color": "black"}, #teal, segol, #18 in the smooth rainbow scheme
 		"9": {"hex_color":"#e4632d", "font_color": "black"}, #coral, gershayim, #28 in smooth rainbow scheme
 		"10":{"hex_color":"#6059a9", "font_color": "#f9ff33"}, #deepest purple, tlisha, #10 in smooth rainbow scheme
 		"11":{"hex_color":"#b8221e", "font_color": "#FFFFFF"}, #RARE deep red, double mercha, #31 in smooth rainbow scheme

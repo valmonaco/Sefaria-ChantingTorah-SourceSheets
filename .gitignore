@@ -138,3 +138,4 @@ dmypy.json
 cython_debug/
 
 private_audio.py
+static/b_audio/

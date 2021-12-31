@@ -38,7 +38,7 @@ SILUK4_8 = u'\u05BD' + u'\u0596'
 SILUK4_8 = SILUK4_8[::-1]
 
 SILUK_TROPE_LIST = [SILUK, SILUK_d, SILUK4_8,SILUK3_7,SILUK2_6,SILUK1_5]
-SILUK_TROPE_TUNES = ["none", "none", "447576.mp3", "447575.mp3", "447574.mp3","447573.mp3"]
+SILUK_TROPE_TUNES = ["sof_pasuk_clip.mp3", "none", "447576.mp3", "447575.mp3", "447574.mp3","447573.mp3"]
 
 YTIV1_32 = u'\u0594'+ u'\u05A3' + u'\u059A'
 YTIV1_32  = YTIV1_32[::-1]
@@ -93,13 +93,13 @@ KATON6_14d = u'\u0594' + u'\u05A3' + u'\u0599'+ u'\u0599'+ u'\u05A4'+ u'\u05A3'
 KATON6_14 = KATON6_14[::-1]
 KATON6_14d = KATON6_14d[::-1]
 
-KATON_TROPE_LIST = [ KATON,    KATONX1_notlisted,   YTIV2_33,    YTIV1_32,    KATON5_13,    KATON5_13d,   KATON4_12,   KATON4_12d,    KATON3_11,    KATON3_11d,      KATON2_10,     KATON2_10d1,  KATON2_10d2,  KATON1_9,      KATON1_9d,       KATON6_14]
-KATON_TROPE_TUNES = ["none",  "none",            "447558.mp3","447560.mp3","447581.mp3", "447581.mp3", "447580.mp3", "447580.mp3", "447538.mp3", "447538.mp3",    "447579.mp3",  "447579.mp3", "447579.mp3", "447578.mp3",  "447578.mp3",    "447582.mp3"]
+KATON_TROPE_LIST = [ KATON,                 KATONX1_notlisted,   YTIV2_33,    YTIV1_32,    KATON5_13,    KATON5_13d,   KATON4_12,   KATON4_12d,    KATON3_11,    KATON3_11d,      KATON2_10,     KATON2_10d1,  KATON2_10d2,  KATON1_9,      KATON1_9d,       KATON6_14]
+KATON_TROPE_TUNES = ["katon_only_clip.mp3", "munach_katon_clip.mp3",            "447558.mp3","447560.mp3","447581.mp3", "447581.mp3", "447580.mp3", "447580.mp3", "447538.mp3", "447538.mp3",    "447579.mp3",  "447579.mp3", "447579.mp3", "447578.mp3",  "447578.mp3",    "447582.mp3"]
 
 KADMA= u'\u05A8'
 KADMA =KADMA[::-1]
 KADMA_TROPE = [KADMA]
-KADMA_TROPE_TUNE=["none"]
+KADMA_TROPE_TUNE=["kadma_clip.mp3"]
 
 KVAZLA= u'\u059C' + u'\u05A8'
 KVAZLA =KVAZLA[::-1]
@@ -296,7 +296,7 @@ TLISHA_KTANA1_29x = u'\u05A9' + u'\u05BD' + u'\u05A3'
 TLISHA_KTANA1_29x = TLISHA_KTANA1_29x[::-1]
 
 TLISHA_KTANA_TROPE_LIST = [TLISHA_KTANA, TLISHA_KTANA1_29,TLISHA_KTANA1_29x]
-TLISHA_KTANA_TROPE_TUNES= ["none",       "447598.mp3",     "none"]
+TLISHA_KTANA_TROPE_TUNES= ["tlisha_ktana_clip.mp3",       "447598.mp3",     "none"]
 
 TLISHA_KTANA_PP_TROPE_LIST = [TLISHA_KTANA1_29d]
 TLISHA_KTANA_PP_TROPE_TUNES= ["447598.mp3"]

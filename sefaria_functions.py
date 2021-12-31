@@ -140,7 +140,11 @@ def generate_sheet(Book, Chapter, StartVerse, EndVerse, aliyah_ending):
                             comment_object["comment"]= tune_label_html
                             sheet_json["sources"].append(comment_object)
 
-                            media_object["media"] = app.config['TROPE_TUNES_URL'] + tune
+                            if tune[0].isdigit():
+                                media_object["media"] = app.config['TROPE_TUNES_URL1'] + tune
+                            else:
+                                media_object["media"] = app.config['TROPE_TUNES_URL2'] + tune
+
                             sheet_json["sources"].append(media_object)
                         else:
 
