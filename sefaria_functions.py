@@ -129,13 +129,13 @@ def generate_sheet(Book, Chapter, StartVerse, EndVerse, aliyah_ending):
                             comment_object={}
 
                             if tune == "447591.mp3":
-                                tune_label_html='<p><small> Trope '+ str(tune_list.index(tune)+1) +' <span style="background-color:' + trope_tune_labels[tune_list.index(tune)]['bgcolor'] + '; color:'+ trope_tune_labels[tune_list.index(tune)]['fgcolor']+ ';">&nbsp;' + 'Darga T\'vir' + '&nbsp;</small></span>'
+                                tune_label_html='<p><small> Trope '+ str(j) +' <span style="background-color:' + trope_tune_labels[tune_list.index(tune)]['bgcolor'] + '; color:'+ trope_tune_labels[tune_list.index(tune)]['fgcolor']+ ';">&nbsp;' + 'Darga T\'vir' + '&nbsp;</small></span>'
                             elif tune == "447558.mp3":
-                                tune_label_html='<p><small> Trope '+ str(tune_list.index(tune)+1) +' <span style="background-color:' + trope_tune_labels[tune_list.index(tune)]['bgcolor'] + '; color:'+ trope_tune_labels[tune_list.index(tune)]['fgcolor']+ ';">&nbsp;' + 'Katon with Y\'tiv' + '&nbsp;</small></span>'
+                                tune_label_html='<p><small> Trope '+ str(j) +' <span style="background-color:' + trope_tune_labels[tune_list.index(tune)]['bgcolor'] + '; color:'+ trope_tune_labels[tune_list.index(tune)]['fgcolor']+ ';">&nbsp;' + 'Katon with Y\'tiv' + '&nbsp;</small></span>'
                             elif tune == "447560.mp3":
-                                tune_label_html='<p><small> Trope '+ str(tune_list.index(tune)+1) +' <span style="background-color:' + trope_tune_labels[tune_list.index(tune)]['bgcolor'] + '; color:'+ trope_tune_labels[tune_list.index(tune)]['fgcolor']+ ';">&nbsp;' + 'Katon with Y\'tiv' + '&nbsp;</small></span>'
+                                tune_label_html='<p><small> Trope '+ str(j) +' <span style="background-color:' + trope_tune_labels[tune_list.index(tune)]['bgcolor'] + '; color:'+ trope_tune_labels[tune_list.index(tune)]['fgcolor']+ ';">&nbsp;' + 'Katon with Y\'tiv' + '&nbsp;</small></span>'
                             else:
-                                tune_label_html='<p><small> Trope '+ str(tune_list.index(tune)+1) +' <span style="background-color:' + trope_tune_labels[tune_list.index(tune)]['bgcolor'] + '; color:'+ trope_tune_labels[tune_list.index(tune)]['fgcolor']+ ';">&nbsp;' + trope_tune_labels[tune_list.index(tune)]['trope'] + '&nbsp;</small></span>'
+                                tune_label_html='<p><small> Trope '+ str(j) +' <span style="background-color:' + trope_tune_labels[tune_list.index(tune)]['bgcolor'] + '; color:'+ trope_tune_labels[tune_list.index(tune)]['fgcolor']+ ';">&nbsp;' + trope_tune_labels[tune_list.index(tune)]['trope'] + '&nbsp;</small></span>'
 
                             comment_object["comment"]= tune_label_html
                             sheet_json["sources"].append(comment_object)
