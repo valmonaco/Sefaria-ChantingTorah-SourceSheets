@@ -6,7 +6,7 @@ from retrieve_verse_audio_file import retrieve_audio
 def retrieve_Verse(verse) -> str:
 
     url = app.config['GET_URL'] + verse + '?context=0'
-    Sefaria_Torah_verse = requests.get(url,verify="mysite/instance/cauldron-sefaria-org-chain-64.pem")
+    Sefaria_Torah_verse = requests.get(url,verify=app.config['CERT_PEM_PROD'])
 
     Sefaria_Torah_verseJSON = Sefaria_Torah_verse.json()
 
@@ -22,16 +22,16 @@ def valid_ref(retrieved_JSON):
 
 def publish_sheet(values, capped_verses)->str:
     try:
-        response = requests.post(app.config['POST_URL'], data=values,verify="mysite/instance/cauldron-sefaria-org-chain-64.pem")
+        response = requests.post(app.config['POST_URL'], data=values,verify=app.config['CERT_PEM_PROD'])
         responseJSON = response.json()
 
         session.pop('_flashes', None)
         flash("Thanks for using the Torah Chanting Source Sheet Generator. A link to the source sheet is provided below. After opening the source sheet, please bookmark it or make a copy of the source sheet inside Sefaria for yourself.")
 
-        new_sheet_url = "https://val.cauldron.sefaria.org/sheets/" + str(responseJSON["id"]) + "?lang=bi"
-        response = requests.get(new_sheet_url, headers={'User-Agent': 'Mozilla/5.0'},verify="mysite/instance/cauldron-sefaria-org-chain-64.pem")
+        new_sheet_url = "https://www.sefaria.org/sheets/" + str(responseJSON["id"]) + "?lang=bi"
+        response = requests.get(new_sheet_url, headers={'User-Agent': 'Mozilla/5.0'},verify=app.config['CERT_PEM_PROD'])
         while response.status_code != 200:
-            response = requests.get(new_sheet_url, headers={'User-Agent': 'Mozilla/5.0'},verify="mysite/instance/cauldron-sefaria-org-chain-64.pem")
+            response = requests.get(new_sheet_url, headers={'User-Agent': 'Mozilla/5.0'},verify=app.config['CERT_PEM_PROD'])
 
         link_text = "<a href=\"" + new_sheet_url + "\" target=\"_blank\">"+ new_sheet_url + "</a>"
         link = Markup(link_text)
