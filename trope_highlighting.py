@@ -163,13 +163,13 @@ def loop_through_trope_patterns(all_tropes_str, highlight_dict, trope_word_place
 
         elif ((i in start_span) and not(i in end_span)):
             formatted_verse = (formatted_verse + "<span style=\"background-color:" + colors[start_span[i]]['hex_color'] + "; color:"+ colors[start_span[i]]['font_color'] + ";\">" + verse_array[i] + " ")
-            print("i in start_span:" + str(tune_list[i]))
+            #print("i in start_span:" + str(tune_list[i]))
             ordered_tune_list.append(tune_list[i])
             ordered_trope_tune_labels.append(trope_tune_labels[i])
 
         elif ((i in start_span) and (i in end_span)):
             formatted_verse = formatted_verse.rstrip() + "</span>&nbsp;<span style=\"background-color:" + colors[start_span[i]]['hex_color'] + "; color:"+ colors[start_span[i]]['font_color'] + ";\">" + verse_array[i] + " "
-            print("i in both start_span and end span:" + str(tune_list[i]))
+            #print("i in both start_span and end span:" + str(tune_list[i]))
             ordered_tune_list.append(tune_list[i])
             ordered_trope_tune_labels.append(trope_tune_labels[i])
 

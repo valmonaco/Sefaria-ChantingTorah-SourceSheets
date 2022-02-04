@@ -26,7 +26,7 @@ def publish_sheet(values, capped_verses)->str:
         responseJSON = response.json()
 
         session.pop('_flashes', None)
-        flash("Thanks for checking out the Torah Chanting Source Sheet Generator. Currently, the generator does not create source sheets on the main Sefaria site. The link provided below is for a temporary copy of the Sefaria site. The link will stop working at some point in the future and can't be searched for. Please bookmark it for the time being and check back later for updates.")
+        flash("Thanks for using the Torah Chanting Source Sheet Generator. A link to the source sheet is provided below. After opening the source sheet, please bookmark it or make a copy of the source sheet inside Sefaria for yourself.")
 
         new_sheet_url = "https://val.cauldron.sefaria.org/sheets/" + str(responseJSON["id"]) + "?lang=bi"
         response = requests.get(new_sheet_url, headers={'User-Agent': 'Mozilla/5.0'},verify="mysite/instance/cauldron-sefaria-org-chain-64.pem")
@@ -74,6 +74,9 @@ def generate_sheet(Book, Chapter, StartVerse, EndVerse, aliyah_ending):
 
                 Book_Chapter = str(Book) + " " + str(Chapter) + ":"
                 verse_span = Book_Chapter + str(StartVerse+i) + "-" + str(StartVerse+i)
+                print(" ")
+                print(">>> Verse requested: " + verse_span)
+                print(" ")
                 Sefaria_Torah_verseJSON=retrieve_Verse(verse_span)
 
 
