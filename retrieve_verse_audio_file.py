@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup as soup
 from private_audio import id_audio_verse_url
-
+# all audio files are used with the permission of Cantor Wendy Shermet
 
 def retrieve_audio(book, chapter,start_verse,end_verse):
 

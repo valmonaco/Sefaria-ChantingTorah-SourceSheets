@@ -208,7 +208,7 @@ def generate_sheet(Book, Chapter, StartVerse, EndVerse, aliyah_ending):
                 sheet_json["sources"].append(comment_object)
 
             comment_object={}
-            comment_object["comment"]= "<p><small><i>All audio recordings by Cantor Wendy Shermet (Temple Israel, Omaha, NE). Please consider a <a href=\"https://www.templeisraelomaha.com/payment.php\">donation</a> to the Cantor Shermet Music Fund.</i></small></p>"
+            comment_object["comment"]= "<p><small><i>All audio recordings by Cantor Wendy Shermet (Temple Israel, Omaha, NE) and used with permission. Please consider a <a href=\"https://www.templeisraelomaha.com/payment.php\">donation</a> to the Cantor Shermet Music Fund.</i></small></p>"
             sheet_json["sources"].append(comment_object)
 
 
