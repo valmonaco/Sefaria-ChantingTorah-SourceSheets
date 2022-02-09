@@ -108,7 +108,10 @@ def generate_sheet(Book, Chapter, StartVerse, EndVerse, aliyah_ending):
 
 
                     if len(just_trope_str) > 0:
-                        highlighted_verse,tune_list,trope_tune_labels=loop_through_trope_patterns(just_trope_str,highlight_count_dict,cumulative_tropes,Sefaria_Torah_verseJSON['he'],aliyah_ending)
+                        if ((StartVerse+i) == EndVerse) and aliyah_ending:
+                            highlighted_verse,tune_list,trope_tune_labels=loop_through_trope_patterns(just_trope_str,highlight_count_dict,cumulative_tropes,Sefaria_Torah_verseJSON['he'],True)
+                        else:
+                            highlighted_verse,tune_list,trope_tune_labels=loop_through_trope_patterns(just_trope_str,highlight_count_dict,cumulative_tropes,Sefaria_Torah_verseJSON['he'],False)
 
                     comment_object={}
                     comment_object["comment"]= "<p><small>If a trope pattern is not recognized, it will appear without highlighting and without a trope tune audio file. Refer to the full verse chanting audio file for guidance on how to chant unhighlighted text.<br/></small></p>"
