@@ -19,12 +19,14 @@ def retrieve_audio(book, chapter,start_verse,end_verse):
     current_verse=start_verse
     for row in rows:
         if current_verse <= end_verse:
-            verse_tag = row.find('p')
+
+            verse_tag = row.find_all('p')[-1]
             span_tag = verse_tag.find('span')
             if(span_tag):
                 verse=span_tag.get_text()
             else:
                 verse=verse_tag.get_text()
+
 
             if(len(verse)>1):
                 audio_file = row.find('audio')
