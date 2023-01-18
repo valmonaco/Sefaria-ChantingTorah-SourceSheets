@@ -1,4 +1,6 @@
 import requests
+from flask import current_app as app
+
 from bs4 import BeautifulSoup as soup
 from private_audio import id_audio_verse_url
 # all audio files are used with the permission of Cantor Wendy Shermet
@@ -30,7 +32,11 @@ def retrieve_audio(book, chapter,start_verse,end_verse):
 
             if(len(verse)>1):
                 audio_file = row.find('audio')
-                audio_files.append(audio_file['src'])
+
+                if book =='Exodus' and chapter==10 and current_verse==22:
+                    audio_files.append(app.config['EXO10_22'])
+                else:
+                    audio_files.append(audio_file['src'])
 
             specified_verse=str(chapter) + ":" + str(current_verse)
 
